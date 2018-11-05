@@ -5,7 +5,7 @@
   <div class="group">
 
     <div class="site-footer__col-one">
-      <h1 class="school-logo-text school-logo-text--alt-color"><a href="<?php echo site_url() ?>">The <strong>Clinic</strong></a></h1>
+      <h1 class="clinic-logo-text clinic-logo-text--alt-color"><a href="<?php echo site_url() ?>">The <strong>Clinic</strong></a></h1>
       <p><a class="site-footer__link" href="#">Phone ### ## ###</a></p>
     </div>
 
