@@ -1448,7 +1448,7 @@ Version: 0.1 WIP
   @media (min-width: 960px) {
   
     .site-header__menu-trigger {
-      display: none;
+      visibility: hidden;
     }
   }
   
