@@ -26,8 +26,7 @@
     <?php }
     ?>
 
-    <!-- Right hand sidebar box in child pages -->
-    <?php 
+    <?php /* Right hand sidebar box in child pages */
       /* Check if the page is a parent page */
       $isParentPage = get_pages(array(
         'child_of' => get_the_ID()
@@ -51,15 +50,13 @@
         ?>
         </ul>
       </div>
-      <?php } ?>
-
-    <!-- end of sidebar box in child pages -->
+      <?php } /* end of sidebar box in child pages */ ?>
 
     <div class="generic-content">
       <?php the_content(); ?>
     </div>
 
-  </div> <!-- end of narrow-page-section div -->
+  </div>
 
 <?php }
   get_footer();
