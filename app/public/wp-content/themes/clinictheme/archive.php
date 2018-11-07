@@ -7,7 +7,14 @@
         url(<?php echo get_theme_file_uri('/images/5_dogs.jpg') ?> );">
   </div>
   <div class="page-banner__content container container--narrow">
-    <h1 class="page-banner__title">Archives</h1>
+    <h1 class="page-banner__title">
+    <?php if(is_category()) {
+        single_cat_title();
+    } if (is_author()) {
+        echo "Articles and Posts By:"; ?>
+        <br> <?php the_author(); ?>
+    <?php }
+    ?></h1>
     <div class="page-banner__intro">
     </div>
   </div>
