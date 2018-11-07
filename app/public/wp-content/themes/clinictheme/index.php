@@ -20,7 +20,7 @@
       <h2 class="headline headline--medium headline--post-title"><a href="<?php the_permalink(); ?> "><?php the_title(); ?> </a></h2>
 
       <div class="metabox">
-        <p>Posted by "INSERT AUTHOR" on "INSERT DATE", in "INSERT CATEGORY"</p>
+        <p>Posted by <?php the_author_posts_link(); ?> on <?php echo get_the_date('F j, Y'); ?> in <?php echo get_the_category_list(', '); ?> </p>
       </div>
 
       <div class="generic-content">
