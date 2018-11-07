@@ -25,10 +25,11 @@
 
       <div class="generic-content">
         <?php the_excerpt(); ?>
-        <a class="btn btn--blue" href="<?php the_permalink(); ?>">Read More</a>
+        <p><a class="btn btn--blue" href="<?php the_permalink(); ?>">Read More</a></p>
       </div>
     </div>  
   <?php }
+    echo paginate_links();
 ?>
 </div>
 
