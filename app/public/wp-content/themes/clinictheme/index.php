@@ -5,7 +5,7 @@
 <div class="page-banner">
   <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/grey-cat.jpg') ?>);"></div>
     <div class="page-banner__content container container--narrow">
-      <h1 class="page-banner__title">Welcome to the blog section.<h1>
+      <h1 class="page-banner__title">Articles and posts.<h1>
         <div class="page-banner__intro">
           <p>Interesting information and fun facts about your pets!</p>
         </div>
