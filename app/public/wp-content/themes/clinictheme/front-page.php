@@ -55,7 +55,7 @@ get_header(); ?>
       <?php    } 
         wp_reset_postdata(); ?>      
 
-        <p class="t-center no-margin"><a href="#" class="btn btn--blue">View All Posted Articles</a></p>
+        <p class="t-center no-margin"><a href="<?php echo site_url('/articles') ?>" class="btn btn--blue">View All Posted Articles</a></p>
       </div>
     </div>
   </div>
