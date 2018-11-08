@@ -37,7 +37,7 @@ get_header(); ?>
         <h2 class="headline headline--small-plus t-center">Articles by our Staff</h2>
 
         <div class="event-summary">
-          <a class="event-summary__date event-summary__date--beige t-center" href="#">
+          <a class="event-summary__date t-center" href="#">
             <span class="event-summary__month">Jan</span>
             <span class="event-summary__day">20</span>  
           </a>
@@ -47,7 +47,7 @@ get_header(); ?>
           </div>
         </div>
         <div class="event-summary">
-          <a class="event-summary__date event-summary__date--beige t-center" href="#">
+          <a class="event-summary__date t-center" href="#">
             <span class="event-summary__month">Feb</span>
             <span class="event-summary__day">04</span>  
           </a>
@@ -57,7 +57,7 @@ get_header(); ?>
           </div>
         </div>
         
-        <p class="t-center no-margin"><a href="#" class="btn btn--yellow">View All Posted Articles</a></p>
+        <p class="t-center no-margin"><a href="#" class="btn btn--blue">View All Posted Articles</a></p>
       </div>
     </div>
   </div>
