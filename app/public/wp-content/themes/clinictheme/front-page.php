@@ -35,28 +35,26 @@ get_header(); ?>
     <div class="full-width-split__two">
       <div class="full-width-split__inner">
         <h2 class="headline headline--small-plus t-center">Articles by our Staff</h2>
+        <?php
+          $frontpagePosts = new WP_query(array(
+            'posts_per_page' => 2,
+          ));
+          while($frontpagePosts->have_posts()) {
+            $frontpagePosts->the_post(); ?>
+        <div class="event-summary">
+          <a class="event-summary__date t-center"
+          href="<?php echo site_url(slugBuilder()) ?>">
+            <span class="event-summary__month"><?php echo get_the_date('M'); ?></span>
+            <span class="event-summary__day"><?php echo get_the_date('j'); ?></span>  
+          </a>
+          <div class="event-summary__content">
+            <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>"> <?php the_title(); ?> </a></h5>
+            <p><?php echo wp_trim_words(get_the_content(), 50); ?><a href="<?php the_permalink(); ?>" class="nu gray">Read more</a></p>
+          </div>
+        </div>
+      <?php    } 
+        wp_reset_postdata(); ?>      
 
-        <div class="event-summary">
-          <a class="event-summary__date t-center" href="#">
-            <span class="event-summary__month">Jan</span>
-            <span class="event-summary__day">20</span>  
-          </a>
-          <div class="event-summary__content">
-            <h5 class="event-summary__title headline headline--tiny"><a href="#">We Were Voted Best Clinic</a></h5>
-            <p>For the 100th year in a row we are voted #1. <a href="#" class="nu gray">Read more</a></p>
-          </div>
-        </div>
-        <div class="event-summary">
-          <a class="event-summary__date t-center" href="#">
-            <span class="event-summary__month">Feb</span>
-            <span class="event-summary__day">04</span>  
-          </a>
-          <div class="event-summary__content">
-            <h5 class="event-summary__title headline headline--tiny"><a href="#">Vets in the National Spotlight</a></h5>
-            <p>Two of our Vets have been in national news lately. <a href="#" class="nu gray">Read more</a></p>
-          </div>
-        </div>
-        
         <p class="t-center no-margin"><a href="#" class="btn btn--blue">View All Posted Articles</a></p>
       </div>
     </div>
@@ -84,7 +82,15 @@ get_header(); ?>
 </div>
 
 <?php
-
+/* Wordpress functions */
 get_footer();
+
+/* Helper functions */
+function slugBuilder(/*wp puts post object in global scope*/) { 
+  /* TODO: Consider factoring this out of front-page.php */
+  $postYear = get_the_date('Y');
+  $postMonth = get_the_date('n');
+  return "/".$postYear."/".$postMonth;
+}
 
 ?>
