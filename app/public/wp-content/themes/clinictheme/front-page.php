@@ -5,7 +5,7 @@ get_header(); ?>
 <div class="page-banner">
   <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/dogs-whitebg.jpg') ?>);"></div>
     <div class="page-banner__content container t-center c-white">
-      <h1 class="headline headline--large">Welcome!</h1>
+      <h1 class="headline headline--large">Welcome</h1>
       <h2 class="headline headline--medium">To the Clinic</h2>
       <h3 class="headline headline--small">Browse our services and book an appointment</h3>
       <a href="#" class="btn btn--large btn--blue">Book an Appointment</a>

@@ -33,7 +33,7 @@
   }
 }
 
-.school-logo-text {
+.clinic-logo-text {
   position: relative;
   z-index: 20;
   margin: 0;
@@ -41,16 +41,16 @@
   font-weight: 100;
 }
 
-.school-logo-text strong {
+.clinic-logo-text strong {
   font-weight: 400;
 }
 
-.school-logo-text a {
+.clinic-logo-text a {
   color: #FFF;
   text-decoration: none;
 }
 
-.school-logo-text--alt-color a {
+.clinic-logo-text--alt-color a {
   color: #666;
 
   &:hover {
