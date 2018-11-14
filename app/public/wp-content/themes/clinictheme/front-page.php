@@ -1,9 +1,10 @@
-<?php 
+<?php
 
 get_header(); ?>
 
 <div class="page-banner">
-  <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/dogs-whitebg.jpg') ?>);"></div>
+  <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/dogs-whitebg.jpg') ?>);">
+  </div>
     <div class="page-banner__content container t-center c-white">
       <h1 class="headline headline--large">Welcome</h1>
       <h2 class="headline headline--medium">To the Clinic</h2>
@@ -38,33 +39,33 @@ get_header(); ?>
         <p class="t-center no-margin"><a href="<?php echo site_url('/events') ?>" class="btn btn--blue">View All Events</a></p>
       </div>
     </div>
-    <div class="full-width-split__two">
-      <div class="full-width-split__inner">
 
-        <?php
-          $frontpagePosts = new WP_query(array(
-            'posts_per_page' => 2,
-          ));
-          while($frontpagePosts->have_posts()) {
-            $frontpagePosts->the_post(); ?>
-        <div class="event-summary">
-          <a class="event-summary__date t-center"
-          href="<?php echo site_url(slugBuilder()) ?>">
-            <span class="event-summary__month"><?php echo get_the_date('M'); ?></span>
-            <span class="event-summary__day"><?php echo get_the_date('j'); ?></span>  
-          </a>
-          <div class="event-summary__content">
-            <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>"> <?php the_title(); ?> </a></h5>
-            <p><?php echo wp_trim_words(get_the_content(), 50); ?><a href="<?php the_permalink(); ?>" class="nu c-blue">Read more</a></p>
-          </div>
-        </div>
-      <?php    } 
-        wp_reset_postdata(); ?>      
-
-        <p class="t-center no-margin"><a href="<?php echo site_url('/articles') ?>" class="btn btn--blue">View All Posted Articles</a></p>
-      </div>
+  <div class="full-width-split__two">
+    <div class="full-width-split__inner">
+    <h2 class="headline headline--small-plus t-center">Articles</h2>
+  <?php
+    $frontpagePosts = new WP_query(array(
+      'posts_per_page' => 2,
+    ));
+    while ($frontpagePosts->have_posts()) {
+        $frontpagePosts->the_post(); ?>
+  <div class="event-summary">
+    <a class="event-summary__date t-center"
+    href="<?php echo site_url(slugBuilder()) ?>">
+      <span class="event-summary__month"><?php echo get_the_date('M'); ?></span>
+      <span class="event-summary__day"><?php echo get_the_date('j'); ?></span>  
+    </a>
+    <div class="event-summary__content">
+      <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>"><?php the_title(); ?> </a></h5>
+      <p><?php echo wp_trim_words(get_the_content(), 50); ?><a href="<?php the_permalink(); ?>" class="nu c-blue"><br>Read more</a></p>
     </div>
   </div>
+<?php
+    } wp_reset_postdata(); ?>      
+  <p class="t-center no-margin"><a href="<?php echo site_url('/articles') ?>" class="btn btn--blue">View All Posted Articles</a></p>
+</div>
+</div>
+</div>
 
   <div class="hero-slider">
   <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/bus.jpg') ?>);">
@@ -92,11 +93,12 @@ get_header(); ?>
 get_footer();
 
 /* Helper functions */
-function slugBuilder(/*wp puts post object in global scope*/) { 
-  /* TODO: Consider factoring this out of front-page.php */
-  $postYear = get_the_date('Y');
-  $postMonth = get_the_date('n');
-  return "/".$postYear."/".$postMonth;
+function slugBuilder(/*wp puts post object in global scope*/)
+{
+    /* TODO: Consider factoring this out of front-page.php */
+    $postYear = get_the_date('Y');
+    $postMonth = get_the_date('n');
+    return "/".$postYear."/".$postMonth;
 }
 
 ?>
