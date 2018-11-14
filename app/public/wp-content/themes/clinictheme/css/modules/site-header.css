@@ -64,7 +64,7 @@
     }
 
     @mixin atMedium {
-      display: none;
+      visibility: hidden;
     }
   }
 
@@ -83,7 +83,7 @@
     }
 
     @mixin atMedium {
-      display: none;
+      visibility: hidden;
     }
   }
 
