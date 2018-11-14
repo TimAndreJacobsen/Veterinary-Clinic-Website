@@ -21,7 +21,7 @@ function clinic_features(){
 /* Add CSS and JS to be handled by wp */
 add_action('wp_enqueue_scripts', 'clinic_resources');
 
-
-add_action('after_setup_theme', 'clinic_features')
+/* function to load CSS and JavaScript */
+add_action('after_setup_theme', 'clinic_features');
 
 ?>
