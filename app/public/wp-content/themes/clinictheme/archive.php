@@ -1,4 +1,4 @@
-<?php 
+<?php
     get_header();
 ?>
 
@@ -8,20 +8,23 @@
   </div>
   <div class="page-banner__content container container--narrow">
     <h1 class="page-banner__title">
-    <?php if(is_category()) {
-        single_cat_title();
-    } if (is_author()) {
-        echo "Posts By"; ?>
-    <?php }
+    <?php if (is_category()) {
+    single_cat_title();
+} if (is_author()) {
+    echo "Posts By"; ?>
+    <?php
+}
     ?></h1>
-    <div class="page-banner__intro"> <?php if(is_author()) {the_author(); } ?>
+    <div class="page-banner__intro"> <?php if (is_author()) {
+        the_author();
+    } ?>
     </div>
   </div>
 </div>
 <br><br>
 <div class="container container--narrow page section">
 <?php
-  while(have_posts()) {
+  while (have_posts()) {
       the_post(); ?>
      <div class="post-item">
       <h2 class="headline headline--medium headline--post-title"><a href="<?php the_permalink(); ?> "><?php the_title(); ?> </a></h2>
@@ -35,7 +38,8 @@
         <p><a class="btn btn--blue" href="<?php the_permalink(); ?>">Read More</a></p>
       </div>
     </div>  
-  <?php }
+  <?php
+  }
     echo paginate_links();
 ?>
 </div>

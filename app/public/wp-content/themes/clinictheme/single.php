@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 get_header();
 
-while(have_posts()) {
+while (have_posts()) {
     the_post(); ?>
       <div class="page-banner">
         <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/bassets.jpg') ?>);"></div>
@@ -21,7 +21,8 @@ while(have_posts()) {
       </div>
       <div class="generic_content"><?php the_content(); ?></div>
     </div>
-<?php }
+<?php
+}
 
 get_footer();
 
