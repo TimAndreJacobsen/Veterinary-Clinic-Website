@@ -1,7 +1,7 @@
 .page-links {
   position: relative;
   z-index: 1;
-  background-color: $beige;
+  background-color: $gray;
   margin: 0 0 40px 0;
   @mixin atSmallMedium {
     margin: 0 0 40px 20px;
@@ -26,7 +26,7 @@
   }
 
   li {
-    border-top: 1px solid color($beige l(-14%));
+    border-top: 1px solid color($gray l(-14%));
   }
 
   li:first-child {
@@ -36,7 +36,7 @@
   &__active,
   & .current_page_item {
     text-align: center;
-    background-color: color($beige blackness(+11%) s(+50%));
+    background-color: color($gray blackness(+11%) s(+50%));
     color: $mainBlue;
     font-weight: bold;
   }
@@ -52,6 +52,6 @@
 
   li a:hover {
     color: color($mainBlue b(+6%));
-    background-color: color($beige blackness(+18%) s(+65%));
+    background-color: color($gray blackness(+18%) s(+65%));
   }
 }

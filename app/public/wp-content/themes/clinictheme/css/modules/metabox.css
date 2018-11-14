@@ -23,11 +23,11 @@
   p {
     margin: 0;
     font-size: .9rem;
-    color: color($beige l(-45%) s(-33%));
+    color: color($gray l(-45%) s(-33%));
   }
 
   a {
-    color: color($beige l(-45%) s(-33%));
+    color: color($gray l(-45%) s(-33%));
     text-decoration: none;
     font-weight: bold;
   }
