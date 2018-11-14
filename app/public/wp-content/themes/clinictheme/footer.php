@@ -19,6 +19,7 @@
             ));
           ?>
 
+
       <div class="site-footer__col-three">
         <h3 class="headline headline--small">Learn more</h3>
         <nav class="nav-list">
@@ -27,6 +28,7 @@
               'theme_location' => 'footer_menu_location_right'
             ));
           ?>
+          </div>
 
     <div class="site-footer__col-four">
       <h3 class="headline headline--small">Connect With Us</h3>
