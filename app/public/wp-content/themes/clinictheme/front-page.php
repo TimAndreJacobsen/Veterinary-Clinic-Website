@@ -16,20 +16,26 @@ get_header(); ?>
     <div class="full-width-split__one">
       <div class="full-width-split__inner">
         <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
-        
-        <div class="event-summary">
-          <a class="event-summary__date t-center" href="#">
-            <span class="event-summary__month">Mar</span>
-            <span class="event-summary__day">25</span>  
-          </a>
-          <div class="event-summary__content">
-            <h5 class="event-summary__title headline headline--tiny"><a href="#">Dog socializing and playtime event</a></h5>
-            <p>Bring your pet this Tuesday for an playful experience in our yard. <a href="#" class="nu gray">Learn more</a></p>
+        <?php $frontpageEvents = new WP_Query(array(
+          'posts_per_page' => 2,
+          'post_type' => 'event'
+        ));
+        while ($frontpageEvents->have_posts()) {
+            $frontpageEvents->the_post(); ?>
+          <div class="event-summary">
+            <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
+              <span class="event-summary__month"><?php echo get_the_date('M'); ?></span>
+              <span class="event-summary__day"><?php echo get_the_date('j'); ?></span>  
+            </a>
+            <div class="event-summary__content">
+              <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+              <p><?php echo wp_trim_words(get_the_content(), 50); ?><a href="<?php the_permalink(); ?>" class="nu gray">
+              <br>See more</a></p>
+            </div>
           </div>
-        </div>
-        
-        <p class="t-center no-margin"><a href="#" class="btn btn--blue">View All Events</a></p>
-
+        <?php
+        } wp_reset_postdata(); ?>  
+        <p class="t-center no-margin"><a href="<?php echo site_url('/events') ?>" class="btn btn--blue">View All Events</a></p>
       </div>
     </div>
     <div class="full-width-split__two">
