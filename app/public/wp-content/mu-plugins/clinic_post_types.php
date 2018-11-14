@@ -1,6 +1,7 @@
 <?php
 
-function clinic_post_types(){
+function clinic_post_types()
+{
     register_post_type('event', array(
         'public' => true,
         'menu_icon' => 'dashicons-layout',
@@ -15,5 +16,3 @@ function clinic_post_types(){
 }
 
 add_action('init', 'clinic_post_types');
-
-?>

@@ -20,15 +20,6 @@
               ));
               ?>
 
-              <?php /* Commented out HTML coded Header menu bar, using wp_nav_menu() to display menu
-              <ul>
-                <li><a href="<?php echo site_url('/about-us') ?> ">About Us</a></li>
-                <li><a href="<?php echo site_url('/treatment') ?> ">Treatment</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Articles</a></li>
-              </ul>
-              */ ?>
-
             </nav>
             <div class="site-header__util">
               <a href="#" class="btn btn--small btn--orange float-left push-right">Login</a>
