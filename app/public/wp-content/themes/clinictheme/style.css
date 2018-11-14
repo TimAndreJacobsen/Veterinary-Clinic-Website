@@ -617,7 +617,7 @@ p, li {
   }
 
 .page-section--beige {
-    background-color: #FAF0CA;
+    background-color: #C0C0C0;
   }
 
 .page-section p:last-of-type {
@@ -932,7 +932,7 @@ body.login .button-primary:focus {
 }
 
 body.login {
-  background-color: #FAF0CA;
+  background-color: #C0C0C0;
 }
 
 .login h1 a {
@@ -1003,7 +1003,7 @@ body.login {
   }
 
 .btn--beige {
-    background-color: #FAF0CA;
+    background-color: #C0C0C0;
     color: #173f58;
   }
 
@@ -1272,7 +1272,7 @@ body.login {
 @media (min-width: 960px) {
 
 .site-header__search-trigger {
-      display: none
+      visibility: hidden
   }
   }
 
@@ -1297,7 +1297,7 @@ body.login {
 @media (min-width: 960px) {
 
 .site-header__menu-trigger {
-      display: none
+      visibility: hidden
   }
   }
 
@@ -1473,7 +1473,7 @@ body.login {
 
 .main-navigation .current-menu-item a,
 .main-navigation a:hover {
-  color: #FAF0CA;
+  color: #C0C0C0;
 }
 
 .page-banner {
@@ -1958,7 +1958,7 @@ body.admin-bar .search-overlay {
 
 .full-width-split__two {
     flex: 1;
-    background-color: #FAF0CA;
+    background-color: #C0C0C0;
     padding: 1.6rem 16px;
   }
 
@@ -2028,7 +2028,7 @@ body.admin-bar .search-overlay {
 .page-links {
   position: relative;
   z-index: 1;
-  background-color: #FAF0CA;
+  background-color: #C0C0C0;
   margin: 0 0 40px 0;
 }
 
@@ -2058,7 +2058,7 @@ body.admin-bar .search-overlay {
       }
 
 .page-links li {
-    border-top: 1px solid rgb(244, 223, 138);
+    border-top: 1px solid rgb(156, 156, 156);
   }
 
 .page-links li:first-child {
@@ -2068,7 +2068,7 @@ body.admin-bar .search-overlay {
 .page-links__active,
   .page-links .current_page_item {
     text-align: center;
-    background-color: rgb(244, 231, 180);
+    background-color: rgb(133, 214, 214);
     color: #0D3B66;
     font-weight: bold;
   }
@@ -2084,7 +2084,7 @@ body.admin-bar .search-overlay {
 
 .page-links li a:hover {
     color: rgb(13, 51, 87);
-    background-color: rgb(238, 225, 170);
+    background-color: rgb(104, 223, 223);
   }
 
 .acf-map {
@@ -2119,7 +2119,7 @@ margin: 20px 0;
   }
 
 .metabox {
-  background-color: #FAF0CA;
+  background-color: #C0C0C0;
   border-radius: 3px;
   padding: 10px 15px;
   display: inline-block;
@@ -2146,11 +2146,11 @@ margin: 20px 0;
 .metabox p {
     margin: 0;
     font-size: .9rem;
-    color: rgb(168, 146, 56);
+    color: rgb(77, 77, 77);
   }
 
 .metabox a {
-    color: rgb(168, 146, 56);
+    color: rgb(77, 77, 77);
     text-decoration: none;
     font-weight: bold;
   }
