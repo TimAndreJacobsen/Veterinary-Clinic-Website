@@ -5,19 +5,19 @@ get_header(); ?>
 <div class="page-banner">
   <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/dogs-whitebg.jpg') ?>);">
   </div>
-    <div class="page-banner__content container t-center c-white">
-      <h1 class="headline headline--large">Welcome</h1>
-      <h2 class="headline headline--medium">To the Clinic</h2>
-      <h3 class="headline headline--small">Browse our services and book an appointment</h3>
-      <a href="#" class="btn btn--large btn--blue">Book an Appointment</a>
-    </div>
+  <div class="page-banner__content container t-center c-white">
+    <h1 class="headline headline--large">Welcome</h1>
+    <h2 class="headline headline--medium">To the Clinic</h2>
+    <h3 class="headline headline--small">Browse our services and book an appointment</h3>
+    <a href="#" class="btn btn--large btn--blue">Book an Appointment</a>
   </div>
+</div>
 
-  <div class="full-width-split group">
-    <div class="full-width-split__one">
-      <div class="full-width-split__inner">
-        <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
-        <?php $frontpageEvents = new WP_Query(array(
+<div class="full-width-split group">
+  <div class="full-width-split__one">
+    <div class="full-width-split__inner">
+      <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
+      <?php $frontpageEvents = new WP_Query(array(
           'posts_per_page' => 2,
           'post_type' => 'event'
         ));
@@ -42,18 +42,18 @@ get_header(); ?>
             } ?>
             <a href="<?php the_permalink(); ?>" class="nu c-blue">
               <br>See more</a></p>
-            </div>
-          </div>
-        <?php
-        } wp_reset_postdata(); ?>  
-        <p class="t-center no-margin"><a href="<?php echo site_url('/events') ?>" class="btn btn--blue">View All Events</a></p>
+        </div>
       </div>
+      <?php
+        } wp_reset_postdata(); ?>
+      <p class="t-center no-margin"><a href="<?php echo site_url('/events') ?>" class="btn btn--blue">View All Events</a></p>
     </div>
+  </div>
 
   <div class="full-width-split__two">
     <div class="full-width-split__inner">
-    <h2 class="headline headline--small-plus t-center">Articles</h2>
-  <?php
+      <h2 class="headline headline--small-plus t-center">Articles</h2>
+      <?php
     $frontpagePosts = new WP_query(array(
       'posts_per_page' => 2,
     ));
@@ -86,14 +86,9 @@ get_header(); ?>
           Articles</a></p>
     </div>
   </div>
-<?php
-    } wp_reset_postdata(); ?>      
-  <p class="t-center no-margin"><a href="<?php echo site_url('/articles') ?>" class="btn btn--blue">View All Posted Articles</a></p>
-</div>
-</div>
 </div>
 
-  <div class="hero-slider">
+<div class="hero-slider">
   <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/bus.jpg') ?>);">
     <div class="hero-slider__interior container">
       <div class="hero-slider__overlay">
