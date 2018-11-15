@@ -13,9 +13,9 @@
     </div>
 </div>
 <br><br>
+
 <div class="container container--narrow page section">
     <?php
-
 $pastEvents = new WP_Query(array(
     'post_type' => 'event',
     'paged' => get_query_var('paged', 1), /*get information about query URL*/
@@ -28,10 +28,7 @@ $pastEvents = new WP_Query(array(
         'compare' => '<',
         'value' => date('Ymd'), /* loads todays date for use in meta_query */
         'type' => 'numeric'
-      )
-    )
-  ));
-
+      ))));
   while ($pastEvents->have_posts()) {
       $pastEvents->the_post();  
       $eventDate = new DateTime(get_field('event_date', false, false)); ?>
@@ -54,7 +51,7 @@ $pastEvents = new WP_Query(array(
     echo paginate_links(array(
         'total' => $pastEvents->max_num_pages
     ));
-?>
+    ?>
 </div>
 
 <?php

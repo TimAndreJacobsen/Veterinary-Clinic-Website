@@ -58,7 +58,8 @@ get_header(); ?>
       </div>
       <?php
         } wp_reset_postdata(); ?>
-      <p class="t-center no-margin"><a href="<?php echo get_post_type_archive_link('event') ?>" class="btn btn--blue">View All Events</a></p>
+      <p class="t-center no-margin"><a href="<?php echo get_post_type_archive_link('event') ?>" class="btn btn--blue">View
+          All Events</a></p>
     </div>
   </div>
 
