@@ -17,9 +17,7 @@ get_header(); ?>
   <div class="full-width-split__one">
     <div class="full-width-split__inner">
       <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
-      <?php 
-      $today = date('Ymd'); /* loads todays date for use in meta_query */
-      $frontpageEvents = new WP_Query(array(
+      <?php $frontpageEvents = new WP_Query(array(
           'posts_per_page' => 2,
           'post_type' => 'event',
           'orderby' => 'meta_value_num',
@@ -29,7 +27,7 @@ get_header(); ?>
             array(
               'key' => 'event_date',
               'compare' => '>=',
-              'value' => $today,
+              'value' => date('Ymd'), /* loads todays date for use in meta_query */
               'type' => 'numeric'
             )
           )
