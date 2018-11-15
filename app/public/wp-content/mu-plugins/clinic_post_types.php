@@ -6,6 +6,9 @@ function clinic_post_types()
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-layout',
+        'supports' => array(
+            'title', 'editor', 'excerpt'
+        ),
         'rewrite' => array('slug' => 'events'),
         'labels' => array(
             'name' => 'Events',
