@@ -18,6 +18,7 @@
               'theme_location' => 'footer_menu_location_left'
             ));
           ?>
+           </div>
 
 
       <div class="site-footer__col-three">
@@ -28,6 +29,7 @@
               'theme_location' => 'footer_menu_location_right'
             ));
           ?>
+           </div>
           </div>
 
     <div class="site-footer__col-four">
