@@ -20,7 +20,15 @@ function clinic_features()
     register_nav_menu('footer_menu_location_right', 'Footer Menu Location Right');
 }
 
-function event_archive_queries_custom($query){
+function clinic_custom_queries($query){
+    if (!is_admin() AND is_post_type_archive('treatment') AND $query->is_main_query()) {
+        $query->set('orderby', 'title');
+        $query->set('order', 'ASC');
+        $query->set('posts_per_page', -1);
+    }
+
+
+    /* Logic for sorting wp queries for post_type Event */
     if (!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()) {
         $query->set('meta_key', 'event_date');
         $query->set('orderby', 'meta_value_num');
@@ -41,8 +49,8 @@ add_action('wp_enqueue_scripts', 'clinic_resources');
 /* function to load CSS and JavaScript */
 add_action('after_setup_theme', 'clinic_features');
 
-/*  */
-add_action('pre_get_posts', 'event_archive_queries_custom')
+/* hooking custom queries to wp */
+add_action('pre_get_posts', 'clinic_custom_queries')
 
 
 ?>
