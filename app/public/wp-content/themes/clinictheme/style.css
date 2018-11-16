@@ -2115,7 +2115,7 @@ margin: 20px 0;
   }
 
 .link-list a {
-    color: #F95738;
+    color: $mainBlue;
   }
 
 .metabox {
