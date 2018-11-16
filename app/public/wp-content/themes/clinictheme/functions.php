@@ -21,12 +21,19 @@ function clinic_features()
 }
 
 function clinic_custom_queries($query){
+        /* Logic for sorting wp queries for post_type Locales */
+        if (!is_admin() AND is_post_type_archive('locale') AND $query->is_main_query()) {
+            $query->set('orderby', 'title');
+            $query->set('order', 'ASC');
+            $query->set('posts_per_page', -1);
+        }
+
+    /* Logic for sorting wp queries for post_type Treatment */
     if (!is_admin() AND is_post_type_archive('treatment') AND $query->is_main_query()) {
         $query->set('orderby', 'title');
         $query->set('order', 'ASC');
         $query->set('posts_per_page', -1);
     }
-
 
     /* Logic for sorting wp queries for post_type Event */
     if (!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()) {
