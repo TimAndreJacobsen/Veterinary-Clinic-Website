@@ -15,7 +15,7 @@ function clinic_post_types()
             'name' => 'Events',
             'add_new_item' => 'Add new Event',
             'edit_item' => 'Edit Event',
-            'all_items' => 'All Events',
+            'all_items' => 'Events',
             'singular_name' => 'Event',
         )
     ));
@@ -33,8 +33,26 @@ function clinic_post_types()
             'name' => 'Treatments',
             'add_new_item' => 'Add new Treatment',
             'edit_item' => 'Edit Treatment',
-            'all_items' => 'All Treatments',
+            'all_items' => 'Treatments',
             'singular_name' => 'Treatment',
+        )
+    ));
+
+    // Locale Post Type
+    register_post_type('locale', array(
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-admin-multisite',
+        'supports' => array(
+            'title', 'editor'
+        ),
+        'rewrite' => array('slug' => 'locales'),
+        'labels' => array(
+            'name' => 'Locales',
+            'add_new_item' => 'Add new Locale',
+            'edit_item' => 'Edit Locale',
+            'all_items' => 'Locales',
+            'singular_name' => 'Locale',
         )
     ));
 }
