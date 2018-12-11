@@ -7,7 +7,7 @@ function clinic_resources()
     wp_enqueue_style('font_google_roboto', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
     wp_enqueue_style('font_awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
     /* JavaScript */
-    wp_enqueue_script('clinic_js', get_theme_file_uri('/js/scripts-bundled.js'), NULL, '1.0', true);
+    wp_enqueue_script('clinic_js', get_theme_file_uri('/js/scripts-bundled.js'), null, microtime(), true);
 }
 
 function clinic_features()
@@ -21,12 +21,12 @@ function clinic_features()
 }
 
 function clinic_custom_queries($query){
-        /* Logic for sorting wp queries for post_type Locales */
-        if (!is_admin() AND is_post_type_archive('locale') AND $query->is_main_query()) {
-            $query->set('orderby', 'title');
-            $query->set('order', 'ASC');
-            $query->set('posts_per_page', -1);
-        }
+    /* Logic for sorting wp queries for post_type Locales */
+    if (!is_admin() AND is_post_type_archive('locale') AND $query->is_main_query()) {
+        $query->set('orderby', 'title');
+        $query->set('order', 'ASC');
+        $query->set('posts_per_page', -1);
+    }
 
     /* Logic for sorting wp queries for post_type Treatment */
     if (!is_admin() AND is_post_type_archive('treatment') AND $query->is_main_query()) {

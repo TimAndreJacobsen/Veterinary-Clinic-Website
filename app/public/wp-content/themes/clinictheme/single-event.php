@@ -25,6 +25,12 @@ while (have_posts()) {
   <div class="generic_content">
     <?php the_content(); ?>
   </div>
+  
+  <?php
+    $eventLocale = get_field('related_locales');
+    print_r($eventLocale)
+  ?>
+
 </div>
 <?php
 }
