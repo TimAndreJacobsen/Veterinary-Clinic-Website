@@ -1,1 +1,2 @@
-# wp_clinic
+# Veterinarians office sample webiste
+# Work in progress
