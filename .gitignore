@@ -19,3 +19,9 @@ wp-content/plugins/hello.php
 /app/sql
 /node_modules
 wp_clinic.zip
+webpack.config.js
+settings.js
+package.json
+gulpfile.js
+.gitignore
+.gitattributes
