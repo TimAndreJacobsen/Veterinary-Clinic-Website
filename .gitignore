@@ -23,5 +23,4 @@ webpack.config.js
 settings.js
 package.json
 gulpfile.js
-.gitignore
 .gitattributes
