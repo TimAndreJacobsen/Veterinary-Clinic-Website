@@ -17,8 +17,17 @@ while (have_posts()) {
 </div>
 
 <div class="container container--narrow page-section">
+
   <div class="generic_content">
-    <?php the_content(); /* displaying post_content below banner */ ?>
+    <div class="row group"> 
+      <div class="one-third"> <?php /* Employee thumbnail */
+      the_post_thumbnail(); ?>
+      </div>
+      
+      <div class="two-thirds"><?php /* Employee Bio */ 
+      the_content(); ?>
+      </div>
+    </div>
   </div>
   
   <?php /* Handles displaying related locales for events with a locale relationship */
