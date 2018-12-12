@@ -34,7 +34,7 @@ while (have_posts()) {
     $relatedLocales = get_field('related_locales');
     if($relatedLocales){ /* Checks if event has related locales, before displaying */
       echo '<hr class="section-break">';
-      echo '<h2 class="headline headline--medium">Works at</h2>';
+      echo '<h2 class="headline headline--medium">Can be found around</h2>';
       echo '<ul class="link-list min-list">';
       foreach($relatedLocales as $locale){ ?>
         <li><a href="<?php echo get_the_permalink($locale);?>"> <?php echo get_the_title($locale); ?></a></li>
