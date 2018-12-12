@@ -1,4 +1,4 @@
-.professor-cards {
+.employee-cards {
   margin: 0;
   padding: 0;
 
@@ -7,7 +7,7 @@
   }
 }
 
-.professor-card {
+.employee-card {
   position: relative;
   display: inline-block;
   width: 200px;
