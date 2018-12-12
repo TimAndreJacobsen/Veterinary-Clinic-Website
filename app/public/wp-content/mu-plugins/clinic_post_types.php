@@ -62,7 +62,7 @@ function clinic_post_types()
         'has_archive' => true,
         'menu_icon' => 'dashicons-groups',
         'supports' => array(
-            'title', 'editor'
+            'title', 'editor', 'thumbnail'
         ),
         'rewrite' => array('slug' => 'employees'),
         'labels' => array(
