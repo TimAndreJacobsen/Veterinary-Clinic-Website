@@ -64,19 +64,31 @@ function clinic_custom_queries($query){
     }
 }
 
-function page_banner(){
-    // PHP Logic goes here
+function page_banner($args = NULL){
+    if (!$args['title']){
+        $args['title'] = get_the_title();
+    }
+    if (!$args['subtitle']){
+        $args['subtitle'] = get_field('page_banner_subtitle');
+    }
+    if (!$args['image']){
+        if (get_field('page_banner_background_image')){
+            $args['image'] = get_field('page_banner_background_image')['sizes']['page-banner'];
+        } else {
+            $args['image'] = get_theme_file_uri('/images/cocker-bluebg-jpg.jpg');
+        }
+    }
+
     ?>
     <div class="page-banner">
         <div class="page-banner__bg-image" style="background-image: url(<?php 
-            $bannerImage = get_field('page_banner_background_image'); 
-            echo $bannerImage['sizes']['page-banner'] ?>);">
+            echo $args['image']; ?>);">
         </div>
 
         <div class="page-banner__content container container--narrow">
-            <h1 class="page-banner__title"> <?php the_title(); ?></h1>
+            <h1 class="page-banner__title"> <?php echo $args['title']; ?></h1>
             <div class="page-banner__intro">
-                <p><?php the_field('page_banner_subtitle') ?></p>
+                <p><?php echo $args['subtitle']; ?></p>
             </div>
         </div>
     </div> <?php
