@@ -1764,42 +1764,42 @@ body.admin-bar .search-overlay {
   overflow: hidden;
 }
 
-.professor-cards {
+.employee-cards {
   margin: 0;
   padding: 0;
 }
 
-.search-overlay .professor-cards {
+.search-overlay .employee-cards {
     padding-top: 21px;
   }
 
-.professor-card {
+.employee-card {
   position: relative;
   display: inline-block;
-  width: 200px;
+  width: 200px;employee
   margin-right: 15px;
   background-color: #F95738;
   overflow: hidden;
 }
 
-.search-overlay .professor-card {
+.search-overlay .employee-card {
     width: 180px;
   }
 
-.professor-card__image {
+.employee-card__image {
     display: block;
     transition: opacity .3s ease-out, -webkit-transform .3s ease-out;
     transition: opacity .3s ease-out, transform .3s ease-out;
     transition: opacity .3s ease-out, transform .3s ease-out, -webkit-transform .3s ease-out;
   }
 
-.professor-card:hover .professor-card__image {
+.employee-card:hover .employee-card__image {
     opacity: .80;
     -webkit-transform: scale(1.1) rotate(4deg);
             transform: scale(1.1) rotate(4deg);
   }
 
-.professor-card__name {
+.employee-card__name {
     font-weight: 300;
     font-size: .9rem;
     position: absolute;
@@ -1811,11 +1811,11 @@ body.admin-bar .search-overlay {
     background-color: rgba(236, 68, 34, 0.85);
   }
 
-.professor-card:hover .professor-card__name {
+.employee-card:hover .employee-card__name {
     background-color: rgba(213, 62, 32, 0.85);
   }
 
-.professor-card__list-item {
+.employee-card__list-item {
     display: inline-block;
     list-style: none;
   }
