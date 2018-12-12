@@ -59,15 +59,11 @@ while (have_posts()) {
           } else {
             echo wp_trim_words(get_the_content(), 30);
           } ?>
-          <a href="<?php the_permalink(); ?>" class="nu c-blue"> <hr>
-        </div>
     <?php }
   } wp_reset_postdata(); ?>
     
-</div>
-<?php
 
-  
+<?php
   $localeEvents = new WP_Query(array( /* Custom WP_Query for events displayed below page content */
     'posts_per_page' => 2,
     'post_type' => 'event',
@@ -90,9 +86,9 @@ while (have_posts()) {
   ));
 
   if($localeEvents->have_posts()){ /* Checks if Locale has Events to display */
-    echo '<hr class="section-break"><h2 class="headline headline--medium">Upcoming ' . get_the_title() . ' events</h2>';
-
-    /* Handles outputting and displaying upcoming events for selected Locale */
+    /* Handles outputting and displaying upcoming events for selected Locale */ ?>
+    <hr class="section-break"><h2 class="headline headline--medium"><?php echo 'Upcoming ' . get_the_title() . ' events</h2>'; ?>
+    <?php 
     while ($localeEvents->have_posts()) {
         $localeEvents->the_post();
         $eventDate = new DateTime(get_field('event_date', false, false)); ?>
@@ -119,7 +115,7 @@ while (have_posts()) {
     <?php }
   } wp_reset_postdata(); ?>
     
-</div>
+</div> <?php /* end of main content centered div. class="container container--narrow page-section" */ ?>
 <?php
 }
 
