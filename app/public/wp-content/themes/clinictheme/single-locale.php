@@ -45,21 +45,19 @@ while (have_posts()) {
   if( $localeEmployees->have_posts() ){ /* Checks if Locale has Employees to display */
     echo '<hr class="section-break"><h2 class="headline headline--medium">The ' . get_the_title() . ' team</h2>';
 
-    /* Handles outputting and displaying upcoming employees for selected Locale */
+    /* Handles outputting and displaying employees for selected Locale */
+    echo '<ul class="employee-cards">';
     while ($localeEmployees->have_posts()) {
-        $localeEmployees->the_post();
-        $eventDate = new DateTime(get_field('event_date', false, false)); ?>
-        <div class="event-summary__content">
-          <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>">
-          <?php the_title(); ?></a></h5>
-          <p> <?php 
-          if (has_excerpt()) {
-            echo get_the_excerpt(); ?>
-            <?php
-          } else {
-            echo wp_trim_words(get_the_content(), 30);
-          } ?>
+        $localeEmployees->the_post(); ?>
+        <li class="employee-card__list-item">
+          <a class="employee-card" href="<?php the_permalink(); ?>">
+            <img class="employee-card__image" src="<?php the_post_thumbnail_url(); ?>">
+            <span class="employee-card__name"><?php the_title(); ?></span>
+          </a>
+        </li>
+
     <?php }
+    echo '</ul>';
   } wp_reset_postdata(); ?>
     
 
