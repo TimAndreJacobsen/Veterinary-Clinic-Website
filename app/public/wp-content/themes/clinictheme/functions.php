@@ -22,7 +22,7 @@ function clinic_features(){
     add_theme_support('post-thumbnails');
     /* adding new image sizes */
     add_image_size('employee-landscape', 400, 260, true);
-    add_image_size('employee-portait', 480, 650, true);
+    add_image_size('employee-portrait', 480, 650, true);
 
     /* Add header menu to wp-admin */
     register_nav_menu('header_menu_location', 'Header Menu Location');
