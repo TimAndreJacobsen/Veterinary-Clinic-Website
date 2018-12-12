@@ -27,7 +27,48 @@ while (have_posts()) {
     <?php the_content(); ?>
   </div>
 
-  <?php $localeEvents = new WP_Query(array( /* Custom WP_Query for events displayed below page content */
+  <?php 
+  $localeEmployees = new WP_Query(array( /* Custom WP_Query for Employees displayed below page content */
+    'posts_per_page' => -1,
+    'post_type' => 'employee',
+    'orderby' => 'title',
+    'order' => 'ASC',
+    'meta_query' => array(
+      array( /* Filtering database for employees related to the chosen locale */
+        'key' => 'related_locales',
+        'compare' => 'LIKE',
+        'value' => '"' . get_the_ID() . '"' /* WP database wraps ID's in quotation marks. ex: "12" */
+      )
+    )
+  ));
+
+  if( $localeEmployees->have_posts() ){ /* Checks if Locale has Employees to display */
+    echo '<hr class="section-break"><h2 class="headline headline--medium">The ' . get_the_title() . ' team</h2>';
+
+    /* Handles outputting and displaying upcoming employees for selected Locale */
+    while ($localeEmployees->have_posts()) {
+        $localeEmployees->the_post();
+        $eventDate = new DateTime(get_field('event_date', false, false)); ?>
+        <div class="event-summary__content">
+          <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>">
+          <?php the_title(); ?></a></h5>
+          <p> <?php 
+          if (has_excerpt()) {
+            echo get_the_excerpt(); ?>
+            <?php
+          } else {
+            echo wp_trim_words(get_the_content(), 30);
+          } ?>
+          <a href="<?php the_permalink(); ?>" class="nu c-blue"> <hr>
+        </div>
+    <?php }
+  } wp_reset_postdata(); ?>
+    
+</div>
+<?php
+
+  
+  $localeEvents = new WP_Query(array( /* Custom WP_Query for events displayed below page content */
     'posts_per_page' => 2,
     'post_type' => 'event',
     'orderby' => 'meta_value_num',
