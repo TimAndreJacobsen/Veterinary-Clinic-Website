@@ -55,6 +55,24 @@ function clinic_post_types()
             'singular_name' => 'Locale',
         )
     ));
+
+    // Employee Post Type
+    register_post_type('employee', array(
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-groups',
+        'supports' => array(
+            'title', 'editor'
+        ),
+        'rewrite' => array('slug' => 'employees'),
+        'labels' => array(
+            'name' => 'Employees',
+            'add_new_item' => 'Add new employee',
+            'edit_item' => 'Edit employee',
+            'all_items' => 'all employees',
+            'singular_name' => 'employee',
+        )
+    ));
 }
 
 add_action('init', 'clinic_post_types');
