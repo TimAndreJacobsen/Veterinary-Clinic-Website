@@ -32,7 +32,7 @@ function clinic_features(){
 }
 
 /*
- * Custom queries for fine grained filtering of post_types
+ * Custom queries for fine grained filtering of custom post_types
  */
 function clinic_custom_queries($query){
     /* Logic for sorting wp queries for post_type Locales */
@@ -64,22 +64,33 @@ function clinic_custom_queries($query){
     }
 }
 
+/*
+ * page_banner() handles banner area of a page.
+ * If no $args are passed, the function will grab default values.
+ * 
+ * @args: associative array(dictionary)
+ * @param: title, subtitle, banner_image
+ * @returns: HTML and CSS snippet for banner area. 
+ * 
+ * dependencies: Advanced Custom Fields plugin for get_field() function
+ */
 function page_banner($args = NULL){
     if (!$args['title']){
         $args['title'] = get_the_title();
     }
     if (!$args['subtitle']){
+        /* Grab subtitle from WP-admin area */
         $args['subtitle'] = get_field('page_banner_subtitle');
     }
     if (!$args['image']){
         if (get_field('page_banner_background_image')){
+            /* Grab banner image from WP-admin area */
             $args['image'] = get_field('page_banner_background_image')['sizes']['page-banner'];
         } else {
+            /* Default banner-image if all other options fail */
             $args['image'] = get_theme_file_uri('/images/cocker-bluebg-jpg.jpg');
         }
-    }
-
-    ?>
+    } /* HTML snippet returned */?>
     <div class="page-banner">
         <div class="page-banner__bg-image" style="background-image: url(<?php 
             echo $args['image']; ?>);">
