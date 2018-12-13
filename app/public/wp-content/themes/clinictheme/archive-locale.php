@@ -1,17 +1,11 @@
 <?php
     get_header();
+    page_banner(array(
+      'title' => 'Locales',
+      'subtitle' => 'All services in one convinient location'
+    ));
 ?>
 
-<div class="page-banner">
-  <div class="page-banner__bg-image" style="background-image: 
-        url(<?php echo get_theme_file_uri('/images/5_dogs.jpg') ?> );">
-  </div>
-  <div class="page-banner__content container container--narrow">
-    <h1 class="page-banner__title">Visit us at our location</h1>
-    <div class="page-banner__intro">Everything your pets need in one place
-    </div>
-  </div>
-</div>
 <br><br>
 
 <div class="container container--narrow page section">
