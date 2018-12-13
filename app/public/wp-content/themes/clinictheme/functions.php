@@ -90,12 +90,11 @@ function page_banner($args = NULL){
             /* Default banner-image if all other options fail */
             $args['image'] = get_theme_file_uri('/images/cocker-bluebg-jpg.jpg');
         }
-    } /* HTML snippet returned */?>
+    } /* HTML/CSS snippet returned to function caller */?>
     <div class="page-banner">
         <div class="page-banner__bg-image" style="background-image: url(<?php 
             echo $args['image']; ?>);">
         </div>
-
         <div class="page-banner__content container container--narrow">
             <h1 class="page-banner__title"> <?php echo $args['title']; ?></h1>
             <div class="page-banner__intro">
