@@ -1,26 +1,11 @@
 <?php
     get_header();
+    page_banner(array(
+      'title' => get_the_archive_title(),
+      'subtitle' => get_the_archive_description()
+    ));
 ?>
 
-<div class="page-banner">
-  <div class="page-banner__bg-image" style="background-image: 
-        url(<?php echo get_theme_file_uri('/images/5_dogs.jpg') ?> );">
-  </div>
-  <div class="page-banner__content container container--narrow">
-    <h1 class="page-banner__title">
-      <?php if (is_category()) {
-    single_cat_title();
-} if (is_author()) {
-    echo "Posts By"; ?>
-      <?php } ?>
-    </h1>
-    <div class="page-banner__intro">
-      <?php if (is_author()) {
-        the_author();
-    } ?>
-    </div>
-  </div>
-</div>
 <br><br>
 
 <div class="container container--narrow page section">

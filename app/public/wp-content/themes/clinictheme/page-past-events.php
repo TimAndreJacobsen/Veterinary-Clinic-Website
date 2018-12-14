@@ -1,17 +1,12 @@
 <?php
     get_header();
+    page_banner(array(
+        'title' => 'Event archive',
+        'subtitle' => 'Archive of events that have completed',
+        'image' => get_theme_file_uri('/images/5_dogs.jpg')
+    ));
 ?>
 
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: 
-        url(<?php echo get_theme_file_uri('/images/5_dogs.jpg') ?> );">
-    </div>
-    <div class="page-banner__content container container--narrow">
-        <h1 class="page-banner__title">Past Events</h1>
-        <div class="page-banner__intro">Overview of past events
-        </div>
-    </div>
-</div>
 <br><br>
 
 <div class="container container--narrow page section">
