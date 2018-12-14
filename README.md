@@ -1,2 +1,2 @@
-# Veterinarians office sample webiste
-# Work in progress
+# Veterinarians clinic sample website - WiP
+## https://timandrejacobsen.com/
