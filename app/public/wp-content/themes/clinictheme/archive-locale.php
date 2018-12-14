@@ -2,7 +2,8 @@
     get_header();
     page_banner(array(
       'title' => 'Locales',
-      'subtitle' => 'All services in one convenient location'
+      'subtitle' => 'All services in one convenient location',
+      'image' => get_theme_file_uri('/images/countryside_buildings.jpg')
     ));
 ?>
 
