@@ -2,7 +2,7 @@
     get_header();
     page_banner(array(
       'title' => 'Locales',
-      'subtitle' => 'All services in one convinient location'
+      'subtitle' => 'All services in one convenient location'
     ));
 ?>
 
