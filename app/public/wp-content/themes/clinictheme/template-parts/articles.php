@@ -1,3 +1,9 @@
+<?php
+/*
+ * template for displaying articles in content section
+ * Can be called with get_template_part('template-parts/articles')
+ */ ?>
+
 <div class="event-summary">
         <a class="event-summary__date t-center" href="<?php echo site_url(slugBuilder()) ?>">
           <span class="event-summary__month">
