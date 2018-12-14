@@ -46,13 +46,13 @@ get_header(); ?>
     <div class="full-width-split__inner">
       <h2 class="headline headline--small-plus t-center">Articles</h2>
       <?php
-    $frontpagePosts = new WP_query(array(
+      $frontpagePosts = new WP_query(array(
       'posts_per_page' => 2,
-    ));
-    while ($frontpagePosts->have_posts()) {
+      ));
+      while ($frontpagePosts->have_posts()) {
         $frontpagePosts->the_post(); 
         get_template_part('template-parts/articles');
-    } wp_reset_postdata(); ?>
+      } wp_reset_postdata(); ?>
 
       <p class="t-center no-margin"><a href="<?php echo site_url('/articles') ?>" class="btn btn--blue">View All Posted
           Articles</a></p>

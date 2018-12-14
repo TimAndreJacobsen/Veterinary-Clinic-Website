@@ -88,7 +88,7 @@ function page_banner($args = NULL){
             $args['image'] = get_field('page_banner_background_image')['sizes']['page-banner'];
         } else {
             /* Default banner-image if all other options fail */
-            $args['image'] = get_theme_file_uri('/images/cocker-bluebg-jpg.jpg');
+            $args['image'] = get_theme_file_uri('/images/dogs-whitebg.jpg');
         }
     } /* HTML/CSS snippet returned to function caller */?>
     <div class="page-banner">
