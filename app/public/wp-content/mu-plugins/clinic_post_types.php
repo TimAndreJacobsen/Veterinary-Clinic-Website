@@ -56,6 +56,24 @@ function clinic_post_types()
         )
     ));
 
+    // Point of interest Post Type
+    register_post_type('poi', array(
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-location-alt',
+        'supports' => array(
+            'title', 'editor'
+        ),
+        'rewrite' => array('slug' => 'poi'),
+        'labels' => array(
+            'name' => 'Point of Interest',
+            'add_new_item' => 'Add new PoI',
+            'edit_item' => 'Edit PoI',
+            'all_items' => 'All PoIs',
+            'singular_name' => 'Point of Interest',
+        )
+    ));
+
     // Employee Post Type
     register_post_type('employee', array(
         'public' => true,
