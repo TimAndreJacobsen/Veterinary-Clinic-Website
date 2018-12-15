@@ -104,6 +104,12 @@ function page_banner($args = NULL){
     </div> <?php
 }
 
+/* Google Maps API-key */
+function acf_google_maps_api_key($api){
+    $api['key'] = 'AIzaSyCjo77nDtvaUMxoC0rBPGPW0K945tzpirM';
+    return $api;
+}
+
 /* Add CSS and JS to be handled by wp */
 add_action('wp_enqueue_scripts', 'clinic_resources');
 
@@ -111,7 +117,10 @@ add_action('wp_enqueue_scripts', 'clinic_resources');
 add_action('after_setup_theme', 'clinic_features');
 
 /* hooking custom queries to wp */
-add_action('pre_get_posts', 'clinic_custom_queries')
+add_action('pre_get_posts', 'clinic_custom_queries');
+
+/* Google maps API key */
+add_filter('acf/fields/google_map/api', 'acf_google_maps_API_key');
 
 
 ?>
