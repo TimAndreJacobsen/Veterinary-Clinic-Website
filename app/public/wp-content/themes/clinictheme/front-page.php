@@ -9,7 +9,7 @@ get_header(); ?>
     <h1 class="headline headline--large">Welcome</h1>
     <h2 class="headline headline--medium">To the Clinic</h2>
     <h3 class="headline headline--small">Browse our services and book an appointment</h3>
-    <a href="#" class="btn btn--large btn--blue">Book an Appointment</a>
+    <a href="<?php echo site_url('/snake') ?>" class="btn btn--large btn--blue">Book an Appointment</a>
   </div>
 </div>
 
