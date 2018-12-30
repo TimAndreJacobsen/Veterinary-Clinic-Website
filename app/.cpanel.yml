@@ -1,0 +1,8 @@
+---
+deployment:
+      tasks:
+        - export DEPLOYPATH=/home/timanpbl/public_html
+        - /bin cp /app/public/* $DEPLOYPATH
+
+        
+        
