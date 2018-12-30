@@ -2,7 +2,6 @@
 deployment:
       tasks:
         - export DEPLOYPATH=/home/timanpbl/public_html
-#        - /bin/cp -r * $DEPLOYPATH
         - /bin/cp -r ./app/public/* $DEPLOYPATH
 
         
