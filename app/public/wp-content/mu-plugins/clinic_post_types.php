@@ -44,7 +44,7 @@ function clinic_post_types()
         'has_archive' => true,
         'menu_icon' => 'dashicons-admin-multisite',
         'supports' => array(
-            'title', 'editor'
+            'title', 'editor', 'thumbnail'
         ),
         'rewrite' => array('slug' => 'locales'),
         'labels' => array(
@@ -62,7 +62,7 @@ function clinic_post_types()
         'has_archive' => true,
         'menu_icon' => 'dashicons-location-alt',
         'supports' => array(
-            'title', 'editor'
+            'title', 'editor',
         ),
         'rewrite' => array('slug' => 'poi'),
         'labels' => array(
