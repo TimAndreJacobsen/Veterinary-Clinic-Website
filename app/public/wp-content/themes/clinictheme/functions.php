@@ -4,6 +4,7 @@
  * function to load CSS and JavaScript 
  */
 function clinic_resources(){
+    wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyDzoEZVm8qLGy6Pog5Ob-xfh3Cv5YgwgrM', NULL, '1.0', true);
     /* CSS */
     wp_enqueue_style('clinic_styles', get_stylesheet_uri());
     wp_enqueue_style('font_google_roboto', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
@@ -106,7 +107,7 @@ function page_banner($args = NULL){
 
 /* Google Maps API-key */
 function acf_google_maps_api_key($api){
-    $api['key'] = 'AIzaSyCjo77nDtvaUMxoC0rBPGPW0K945tzpirM';
+    $api['key'] = 'AIzaSyDzoEZVm8qLGy6Pog5Ob-xfh3Cv5YgwgrM';
     return $api;
 }
 
