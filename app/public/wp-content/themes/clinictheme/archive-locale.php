@@ -10,7 +10,7 @@
 <br><br>
 <div class="container container--narrow page section">
 
-  <div class="acf-map">
+  <div class="acf-map"> <!-- Map start -->
     <?php
     while (have_posts()) {
       the_post();
@@ -24,9 +24,9 @@
     <?php }
     echo paginate_links();
     wp_reset_postdata(); ?>
-  </div>
+  </div> <!-- Map end -->
 
-  <?php
+  <?php /* Locale cards begin */
   echo '<hr class="section-break"><h2 class="headline headline--medium">Our locales</h2>';
   echo '<ul class="employee-cards">';
   while (have_posts()) {
@@ -38,7 +38,7 @@
       <span class="employee-card__name"><?php the_title(); ?></span></a>
     </li>
 
-  <?php } ?>
+  <?php } /* Locale cards ends */ ?>
 
 </div>
 
