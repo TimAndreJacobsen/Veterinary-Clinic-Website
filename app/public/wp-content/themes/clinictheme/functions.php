@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * page_banner() handles banner area of a page.
  * If no $args are passed, the function will use default values.
  * 
@@ -39,7 +39,7 @@ function page_banner($args = NULL){
     </div> <?php
 }
 
-/*
+/**
  * function to load CSS and JavaScript 
  */
 function clinic_resources(){
@@ -52,7 +52,7 @@ function clinic_resources(){
     wp_enqueue_style('clinic_styles', get_stylesheet_uri(), NULL, microtime());
 }
 
-/*
+/**
  * Theme Setup
  */
 function clinic_features(){
@@ -70,7 +70,7 @@ function clinic_features(){
     register_nav_menu('footer_menu_location_right', 'Footer Menu Location Right');
 }
 
-/*
+/**
  * Custom queries for fine grained filtering of custom post_types
  */
 function clinic_custom_queries($query){
@@ -118,7 +118,7 @@ function acf_google_maps_api_key($api){
 add_action('wp_enqueue_scripts', 'clinic_resources');
 /* function to load CSS and JavaScript */
 add_action('after_setup_theme', 'clinic_features');
-/* hooking custom queries to wp */
+/* hooking custom queries to Wordpress */
 add_action('pre_get_posts', 'clinic_custom_queries');
 /* Google maps API key */
 add_filter('acf/fields/google_map/api', 'acf_google_maps_API_key');
