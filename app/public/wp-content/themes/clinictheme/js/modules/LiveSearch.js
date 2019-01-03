@@ -9,10 +9,11 @@ class LiveSearch {
         this.searchField = $("#search-term");
         this.resultsDiv = $("#search-overlay__results")
         this.delayedLiveSearch;
+        this.previousValue;
         this.delayMilliseconds = 2000;
         this.events();
         this.isOverlayOpen = false;
-        this.isLoadingResults = false;
+        this.isLoadingVisible = false;
     }
 
     // Events
@@ -53,17 +54,26 @@ class LiveSearch {
     }
 
     liveSearcher(){
-        clearTimeout(this.delayedLiveSearch);
-        if(!this.isLoadingResults){
-            this.resultsDiv.html('<div class="spinner-loader"></div>');
-            this.isLoadingResults = true;
-        }              
-        this.delayedLiveSearch = setTimeout(this.getResults.bind(this), this.delayMilliseconds)
+        if(this.searchField.val() != this.previousValue) {
+            clearTimeout(this.delayedLiveSearch);
 
+            if(this.searchField.val()) {
+                if(!this.isLoadingVisible){
+                    this.resultsDiv.html('<div class="spinner-loader"></div>');
+                    this.isLoadingVisible = true;
+                }          
+                this.delayedLiveSearch = setTimeout(this.getResults.bind(this), this.delayMilliseconds);    
+            } else {
+                this.resultsDiv.html('');
+                this.isLoadingVisible = false;
+            }
+        }
+        this.previousValue = this.searchField.val();
     }
 
     getResults(){
         this.resultsDiv.html("Imagine this actually did something");
+        this.isLoadingVisible = false;
     }
 
 }
