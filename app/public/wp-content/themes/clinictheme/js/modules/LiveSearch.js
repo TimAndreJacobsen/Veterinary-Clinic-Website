@@ -6,6 +6,9 @@ class LiveSearch {
         this.openButton = $(".js-search-trigger");
         this.closeButton = $(".search-overlay__close");
         this.searchOverlay = $(".search-overlay");
+        this.searchField = $("#search-term");
+        this.delayedLiveSearch;
+        this.delayMilliseconds = 1000;
         this.events();
         this.isOverlayOpen = false;
     }
@@ -16,8 +19,9 @@ class LiveSearch {
         this.openButton.on("click", this.openOverlay.bind(this));
         this.closeButton.on("click", this.closeOverlay.bind(this));
 
-        // hook keyboard handler
+        // hook keyboard handlers
         $(document).on("keydown", this.keyPressHandler.bind(this));
+        this.searchField.on("keydown", this.liveSearcher.bind(this));
     }
 
     // Functions/Methods
@@ -44,6 +48,11 @@ class LiveSearch {
         if(e.keyCode == 83) { // Escape pressed - close overlay
             this.openOverlay();
         }
+    }
+
+    liveSearcher(){
+        clearTimeout(this.delayedLiveSearch);
+        this.delayedLiveSearch = setTimeout(function() {console.debug("Timeout checker on typing");}, this.delayMilliseconds)
     }
 
 }
