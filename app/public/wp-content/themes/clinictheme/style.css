@@ -916,8 +916,8 @@ p, li {
 /* Customize Login Screen */
 
 body.login .button-primary {
-  background-color: #F95738;
-  border-color: rgb(224, 84, 56);
+  background-color: #0D3B66;
+  border-color: rgb(0, 0, 0);
   text-shadow: 0 -1px 1px rgb(212, 82, 56),1px 0 1px rgb(212, 82, 56),0 1px 1px rgb(212, 82, 56),-1px 0 1px rgb(212, 82, 56);
   box-shadow: 0 1px 0 rgb(199, 80, 56);
 }
@@ -1060,7 +1060,7 @@ body.login {
 .submit-note {
   color: #FFF;
   border: none;
-  background-color: #F95738;
+  background-color: #0D3B66;
   line-height: 1.65;
 }
 
@@ -1739,8 +1739,7 @@ body.admin-bar .search-overlay {
   font-size: 1rem;
   font-weight: 300;
   outline: none;
-  color: #F95738;
-
+  color: rgb(0, 0, 0);
 }
 
 @media (min-width: 530px) {
@@ -1778,7 +1777,7 @@ body.admin-bar .search-overlay {
   display: inline-block;
   width: 200px;employee
   margin-right: 15px;
-  background-color: #F95738;
+  background-color: #0D3B66;
   overflow: hidden;
 }
 
