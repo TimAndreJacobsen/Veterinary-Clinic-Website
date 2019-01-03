@@ -7,10 +7,12 @@ class LiveSearch {
         this.closeButton = $(".search-overlay__close");
         this.searchOverlay = $(".search-overlay");
         this.searchField = $("#search-term");
+        this.resultsDiv = $("#search-overlay__results")
         this.delayedLiveSearch;
-        this.delayMilliseconds = 1000;
+        this.delayMilliseconds = 2000;
         this.events();
         this.isOverlayOpen = false;
+        this.isLoadingResults = false;
     }
 
     // Events
@@ -45,14 +47,23 @@ class LiveSearch {
         if(e.key === "Escape") { // Escape pressed - close overlay
             this.closeOverlay();
         }
-        if(e.keyCode == 83) { // Escape pressed - close overlay
+        if(e.keyCode == 83) { // "s" key pressed - open overlay
             this.openOverlay();
         }
     }
 
     liveSearcher(){
         clearTimeout(this.delayedLiveSearch);
-        this.delayedLiveSearch = setTimeout(function() {console.debug("Timeout checker on typing");}, this.delayMilliseconds)
+        if(!this.isLoadingResults){
+            this.resultsDiv.html('<div class="spinner-loader"></div>');
+            this.isLoadingResults = true;
+        }              
+        this.delayedLiveSearch = setTimeout(this.getResults.bind(this), this.delayMilliseconds)
+
+    }
+
+    getResults(){
+        this.resultsDiv.html("Imagine this actually did something");
     }
 
 }
