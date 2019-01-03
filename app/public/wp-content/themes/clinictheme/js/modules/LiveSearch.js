@@ -24,10 +24,11 @@ class LiveSearch {
 
         // hook keyboard handlers
         $(document).on("keydown", this.keyPressHandler.bind(this));
-        this.searchField.on("keydown", this.liveSearcher.bind(this));
+        this.searchField.on("keyup", this.liveSearcher.bind(this));
     }
 
     // Functions/Methods
+
     openOverlay(){
         if(!this.isOverlayOpen){
             this.searchOverlay.addClass("search-overlay--active")
@@ -48,7 +49,8 @@ class LiveSearch {
         if(e.key === "Escape") { // Escape pressed - close overlay
             this.closeOverlay();
         }
-        if(e.keyCode == 83) { // "s" key pressed - open overlay
+        // "s" key pressed - open overlay | ignore on open overlay or if input/textfield has focus
+        if(e.keyCode == 83 && !$("input, textarea").is(':focus')) { 
             this.openOverlay();
         }
     }
