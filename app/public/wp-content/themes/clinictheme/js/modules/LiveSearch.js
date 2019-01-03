@@ -74,7 +74,9 @@ class LiveSearch {
     }
 
     getResults(){
-        this.resultsDiv.html("Imagine this actually did something");
+        $.getJSON('http://localhost:3000/wp-json/wp/v2/posts?search=' + this.searchField.val(), function(result){
+            //alert(result[0].title.rendered);
+        });
         this.isLoadingVisible = false;
     }
 
