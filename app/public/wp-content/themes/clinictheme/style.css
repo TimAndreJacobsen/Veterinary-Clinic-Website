@@ -1667,7 +1667,7 @@ body.admin-bar .search-overlay {
 .search-overlay__icon {
     margin-right: 10px;
     font-size: 1.8rem;
-    color: #F95738;
+    color: #0D3B66;
   }
 
 @media (min-width: 960px) {
@@ -1679,7 +1679,7 @@ body.admin-bar .search-overlay {
 
 .search-overlay--active {
     visibility: visible;
-    opacity: 1;
+    opacity: 0.9;
     -webkit-transform: scale(1);
             transform: scale(1);
   }
@@ -1701,7 +1701,7 @@ body.admin-bar .search-overlay {
     cursor: pointer;
     transition: all .3s;
     background-color: #FFF;
-    color: #F95738;
+    color: #0D3B66;
     line-height: .7;
   }
 
