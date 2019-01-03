@@ -7,35 +7,42 @@ class LiveSearch {
         this.closeButton = $(".search-overlay__close");
         this.searchOverlay = $(".search-overlay");
         this.events();
+        this.isOverlayOpen = false;
     }
 
     // Events
     events(){
+        // On mouse click events
         this.openButton.on("click", this.openOverlay.bind(this));
         this.closeButton.on("click", this.closeOverlay.bind(this));
-        $(document).on("keyup", this.keyPressHandler.bind(this));
+
+        // hook keyboard handler
+        $(document).on("keydown", this.keyPressHandler.bind(this));
     }
 
     // Functions/Methods
     openOverlay(){
-        this.searchOverlay.addClass("search-overlay--active")
-        $("body").addClass("body-no-scroll");
+        if(!this.isOverlayOpen){
+            this.searchOverlay.addClass("search-overlay--active")
+            $("body").addClass("body-no-scroll");
+            this.isOverlayOpen = true;
+        }
     }
 
     closeOverlay(){
-        this.searchOverlay.removeClass("search-overlay--active")
-        $("body").removeClass("body-no-scroll");
+        if(this.isOverlayOpen){
+            this.searchOverlay.removeClass("search-overlay--active")
+            $("body").removeClass("body-no-scroll");
+            this.isOverlayOpen = false;
+        }
     }
 
     keyPressHandler(e){
-        console.log(e.keyCode)
         if(e.key === "Escape") { // Escape pressed - close overlay
-            this.searchOverlay.removeClass("search-overlay--active")
-            $("body").removeClass("body-no-scroll");
+            this.closeOverlay();
         }
         if(e.keyCode == 83) { // Escape pressed - close overlay
-            this.searchOverlay.addClass("search-overlay--active")
-            $("body").addClass("body-no-scroll");
+            this.openOverlay();
         }
     }
 
