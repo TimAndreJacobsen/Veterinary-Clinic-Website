@@ -40,7 +40,8 @@ class LiveSearch {
         if(!this.isOverlayOpen){
             this.searchOverlay.addClass("search-overlay--active")
             $("body").addClass("body-no-scroll");
-            setTimeout( ()=>this.searchField.focus(), 301 );
+            this.searchField.val('');
+            setTimeout( () => this.searchField.focus(), 301 );
             this.isOverlayOpen = true;
         }
     }
