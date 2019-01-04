@@ -37,6 +37,12 @@ class LiveSearch {
 
     // ----- Functions/Methods ----- ----- ----- -----
 
+    /** Opens Overlay and sets focus to search field
+     * 301ms timeout because of fade effect(300ms)
+     * locks scrolling, clears searchfield of text and flags isOverlayOpen TRUE
+     * 
+     * Adds CSS classes to provide functionality
+     */
     openOverlay(){
         if(!this.isOverlayOpen){
             this.searchOverlay.addClass("search-overlay--active")
@@ -47,6 +53,9 @@ class LiveSearch {
         }
     }
 
+    /**
+     * Closes overlay by removing CSS classes and changes isOverlayOpen flag to FALSE
+     */
     closeOverlay(){
         if(this.isOverlayOpen){
             this.searchOverlay.removeClass("search-overlay--active")
@@ -55,16 +64,30 @@ class LiveSearch {
         }
     }
 
+    /**
+     * Handler for keyboard shortcuts
+     * @param {KeyboardEvent} e 
+     */
     keyPressHandler(e){
         if(e.key === "Escape") { // Escape pressed - close overlay
             this.closeOverlay();
         }
-        // "s" key pressed - open overlay | ignore on open overlay or if input/textfield has focus
+        // "s" key pressed - open overlay | ignore on already open overlay OR if other input/textfield has focus
         if(e.keyCode == 83 && !$("input, textarea").is(':focus')) { 
             this.openOverlay();
         }
     }
 
+    /**
+     * Live Search Function
+     * searches in real-time as you type, but after a pause in typing.
+     * Change delay before search request is sent in Constructor.
+     * 
+     * Conditional checks for new vs old string in search term, to prevent all keyboard events from firing search request.
+     * Conditional checks for when to display Spinning Loading Icon
+     * 
+     * Calls getResults() with the search-term string provided by user.
+     */
     liveSearcher(){
         if(this.searchField.val() != this.previousValue) {
             clearTimeout(this.delayedLiveSearch);
@@ -83,8 +106,14 @@ class LiveSearch {
         this.previousValue = this.searchField.val();
     }
 
+    /** Get Results - gets JSON data for search-term
+     * 
+     * Recieves search-term from liveSearcher() function.
+     * fetches JSON data for all post types matching search and displays them in results.
+     * 
+     */
     getResults(){
-        $.when(
+        $.when( // Fetch JSON data from REST API and store in arrays
             $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()),
             $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val()),
             $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/event?search=' + this.searchField.val()),
@@ -92,15 +121,19 @@ class LiveSearch {
             $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/locale?search=' + this.searchField.val()),
             $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/employee?search=' + this.searchField.val())
             ).then( (posts, pages, events, treatments, locales, employees)=> {
-            var result = posts[0].concat(pages[0], events[0], treatments[0], locales[0], employees[0]);
+                // Concatenate JSON data arrays into a single array
+                var result = posts[0].concat(pages[0], events[0], treatments[0], locales[0], employees[0]);
+                // Display search results
                 this.resultsDiv.html(`
                 <h2 class="search-overlay__section-title">Search Result</h2>
                 ${result.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
                 ${result.map(item => `<li><a href="${item.link}">${item.title.rendered}</a></li>`).join('')}
                 ${result.length ? '</ul>' : ''}
             `);
+            // Loading icon flag
             this.isLoadingVisible = false;
         }, () => {
+            // Basic error handling
             this.resultsDiv.html('<p>Unexpected Error, please try again.</p>');
         });
     }

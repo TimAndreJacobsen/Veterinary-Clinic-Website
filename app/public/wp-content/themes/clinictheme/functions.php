@@ -113,7 +113,7 @@ function acf_google_maps_api_key($api){
 }
 
 /**
- * REST api setup
+ * REST API - register custom JSON fields
  */
 function clinic_custom_rest() {
     register_rest_field('post', 'author_name', array(
@@ -121,11 +121,9 @@ function clinic_custom_rest() {
     ));
 }
 
-
 /**
  * Hooks and scripts
  */
-
 /* Add CSS and JS to be handled by Wordpress */
 add_action('wp_enqueue_scripts', 'clinic_resources');
 /* function to load CSS and JavaScript */
