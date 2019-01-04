@@ -6,6 +6,7 @@ function clinic_post_types()
     register_post_type('event', array(
         'public' => true,
         'has_archive' => true,
+        'show_in_rest' => true,
         'menu_icon' => 'dashicons-layout',
         'supports' => array(
             'title', 'editor', 'excerpt'
@@ -24,6 +25,7 @@ function clinic_post_types()
     register_post_type('treatment', array(
         'public' => true,
         'has_archive' => true,
+        'show_in_rest' => true,
         'menu_icon' => 'dashicons-heart',
         'supports' => array(
             'title', 'editor'
@@ -42,6 +44,7 @@ function clinic_post_types()
     register_post_type('locale', array(
         'public' => true,
         'has_archive' => true,
+        'show_in_rest' => true,
         'menu_icon' => 'dashicons-admin-multisite',
         'supports' => array(
             'title', 'editor', 'thumbnail'
@@ -60,6 +63,7 @@ function clinic_post_types()
     register_post_type('poi', array(
         'public' => true,
         'has_archive' => true,
+        'show_in_rest' => true,
         'menu_icon' => 'dashicons-location-alt',
         'supports' => array(
             'title', 'editor',
@@ -78,6 +82,7 @@ function clinic_post_types()
     register_post_type('employee', array(
         'public' => true,
         'has_archive' => true,
+        'show_in_rest' => true,
         'menu_icon' => 'dashicons-groups',
         'supports' => array(
             'title', 'editor', 'thumbnail'
