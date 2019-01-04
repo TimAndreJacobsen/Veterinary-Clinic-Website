@@ -85,7 +85,7 @@ class LiveSearch {
 
     getResults(){
         $.when(
-            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2as/posts?search=' + this.searchField.val()),
+            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()),
             $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val())
             ).then( (posts, pages)=> {
             var result = posts[0].concat(pages[0]);
