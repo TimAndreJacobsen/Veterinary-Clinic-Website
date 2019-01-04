@@ -112,6 +112,15 @@ function acf_google_maps_api_key($api){
     return $api;
 }
 
+/**
+ * REST api setup
+ */
+function clinic_custom_rest() {
+    register_rest_field('post', 'author_name', array(
+        'get_callback' => function(){return get_the_author();}
+    ));
+}
+
 
 /**
  * Hooks and scripts
@@ -125,5 +134,7 @@ add_action('after_setup_theme', 'clinic_features');
 add_action('pre_get_posts', 'clinic_custom_queries');
 /* Google maps API key */
 add_filter('acf/fields/google_map/api', 'acf_google_maps_API_key');
+/* REST API hook */
+add_action('rest_api_init', 'clinic_custom_rest');
 
 ?>
