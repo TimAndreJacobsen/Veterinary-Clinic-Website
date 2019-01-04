@@ -10,7 +10,7 @@ class LiveSearch {
         this.resultsDiv = $("#search-overlay__results")
         this.delayedLiveSearch;
         this.previousValue;
-        this.delayMilliseconds = 2000;
+        this.delayMilliseconds = 2000; // 1000ms = 1second
         this.events();
         this.isOverlayOpen = false;
         this.isLoadingVisible = false;
@@ -74,10 +74,15 @@ class LiveSearch {
     }
 
     getResults(){
-        $.getJSON('http://localhost:3000/wp-json/wp/v2/posts?search=' + this.searchField.val(), function(result){
-            //alert(result[0].title.rendered);
+        $.getJSON('http://localhost:3000/wp-json/wp/v2/posts?search=' + this.searchField.val(), posts => {
+            this.resultsDiv.html(`
+            <h2 class="search-overlay__section-title">Search Result</h2>
+            <ul class="link-list min-list">
+            ${posts.map(item => `<li><a href="${item.link}">${item.title.rendered}</a></li>`).join('')}
+            </ul>
+          `);
         });
-        this.isLoadingVisible = false;
+        //this.isLoadingVisible = false;
     }
 
 }
