@@ -86,9 +86,13 @@ class LiveSearch {
     getResults(){
         $.when(
             $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()),
-            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val())
-            ).then( (posts, pages)=> {
-            var result = posts[0].concat(pages[0]);
+            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val()),
+            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/event?search=' + this.searchField.val()),
+            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/treatment?search=' + this.searchField.val()),
+            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/locale?search=' + this.searchField.val()),
+            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/employee?search=' + this.searchField.val())
+            ).then( (posts, pages, events, treatments, locales, employees)=> {
+            var result = posts[0].concat(pages[0], events[0], treatments[0], locales[0], employees[0]);
                 this.resultsDiv.html(`
                 <h2 class="search-overlay__section-title">Search Result</h2>
                 ${result.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
