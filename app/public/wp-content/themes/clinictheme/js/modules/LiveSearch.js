@@ -1,23 +1,29 @@
 import $ from 'jquery';
 
 class LiveSearch {
-    // Constructor
+
+    // ----- Constructor ----- ----- -----
     constructor(){
         this.addSearchHTML(); // Add search HTML to body of page.
+
+        // Setting variables
         this.openButton = $(".js-search-trigger");
         this.closeButton = $(".search-overlay__close");
         this.searchOverlay = $(".search-overlay");
         this.searchField = $("#search-term");
         this.resultsDiv = $("#search-overlay__results")
-        this.delayedLiveSearch;
-        this.previousValue;
-        this.delayMilliseconds = 2000; // 1000ms = 1second
-        this.events();
+        
         this.isOverlayOpen = false;
         this.isLoadingVisible = false;
+        this.delayedLiveSearch;
+        this.previousValue;
+        this.events();
+
+        // Settings
+        this.delayMilliseconds = 1000; // Delay in typing before sending search request
     }
 
-    // Events
+    // ----- Events ----- ----- ----- -----
     events(){
         // On mouse click events
         this.openButton.on("click", this.openOverlay.bind(this));
@@ -28,12 +34,13 @@ class LiveSearch {
         this.searchField.on("keyup", this.liveSearcher.bind(this));
     }
 
-    // Functions/Methods
+    // ----- Functions/Methods ----- ----- ----- -----
 
     openOverlay(){
         if(!this.isOverlayOpen){
             this.searchOverlay.addClass("search-overlay--active")
             $("body").addClass("body-no-scroll");
+            setTimeout( ()=>this.searchField.focus(), 301 );
             this.isOverlayOpen = true;
         }
     }
