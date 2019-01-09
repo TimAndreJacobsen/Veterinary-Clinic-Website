@@ -22,7 +22,7 @@ get_header(); ?>
           'post_type' => 'event',
           'orderby' => 'meta_value_num',
           'meta_key' => 'event_date',
-          'order' => 'ASC',
+          'order' => 'DESC',
           'meta_query' => array(
             array(
               'key' => 'event_date',
@@ -47,7 +47,8 @@ get_header(); ?>
       <h2 class="headline headline--small-plus t-center">Articles</h2>
       <?php
       $frontpagePosts = new WP_query(array(
-      'posts_per_page' => 2,
+        'posts_per_page' => 2,
+        'order' => 'DESC'
       ));
       while ($frontpagePosts->have_posts()) {
         $frontpagePosts->the_post(); 
