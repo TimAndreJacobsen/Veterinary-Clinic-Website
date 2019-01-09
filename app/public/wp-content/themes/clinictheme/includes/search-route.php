@@ -40,6 +40,7 @@ function clinic_search_results($data){
         // post_type: post (articles)
         if(get_post_type() == 'post') {
             array_push($query_results['articles'], array(
+                'post_type' => get_post_type(),
                 'title' => get_the_title(),
                 'link' => get_the_permalink()
             ));
@@ -47,6 +48,7 @@ function clinic_search_results($data){
         // post_type: page
         if(get_post_type() == 'page') {
             array_push($query_results['pages'], array(
+                'post_type' => get_post_type(),
                 'title' => get_the_title(),
                 'link' => get_the_permalink()
             ));
@@ -54,6 +56,7 @@ function clinic_search_results($data){
         // post_type: employee
         if(get_post_type() == 'employee') {
             array_push($query_results['employees'], array(
+                'post_type' => get_post_type(),
                 'title' => get_the_title(),
                 'link' => get_the_permalink()
             ));
@@ -61,6 +64,7 @@ function clinic_search_results($data){
         // post_type: locales
         if(get_post_type() == 'locales') {
             array_push($query_results['locales'], array(
+                'post_type' => get_post_type(),
                 'title' => get_the_title(),
                 'link' => get_the_permalink()
             ));
@@ -68,6 +72,7 @@ function clinic_search_results($data){
         // post_type: event
         if(get_post_type() == 'event') {
             array_push($query_results['events'], array(
+                'post_type' => get_post_type(),
                 'title' => get_the_title(),
                 'link' => get_the_permalink()
             ));
@@ -75,6 +80,7 @@ function clinic_search_results($data){
         // post_type: treatment
         if(get_post_type() == 'treatment') {
             array_push($query_results['treatments'], array(
+                'post_type' => get_post_type(),
                 'title' => get_the_title(),
                 'link' => get_the_permalink()
             ));
