@@ -11,7 +11,21 @@ function clinic_register_search(){
 }
 
 function clinic_search_results(){
-    return 'routing works!';
+    $employees = new WP_Query(array(
+        'post_type' => 'employee'
+    ));
+
+    $employee_result = array();
+
+    while($employees->have_posts()){
+        $employees->the_post();
+        array_push($employee_result, array(
+            'title' => get_the_title(),
+            'link' => get_the_permalink()
+        ));
+    }
+
+    return $employee_result;
 }
 
 
