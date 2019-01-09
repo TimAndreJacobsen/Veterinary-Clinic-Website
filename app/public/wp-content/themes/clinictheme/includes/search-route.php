@@ -59,7 +59,8 @@ function clinic_search_results($data){
             array_push($query_results['employees'], array(
                 'post_type' => get_post_type(),
                 'title' => get_the_title(),
-                'link' => get_the_permalink()
+                'link' => get_the_permalink(),
+                'img' => get_the_post_thumbnail_url(0, "employee-landscape")
             ));
         }        
         // post_type: locales
