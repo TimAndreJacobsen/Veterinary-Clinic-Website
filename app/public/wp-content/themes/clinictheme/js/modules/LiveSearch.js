@@ -105,35 +105,52 @@ class LiveSearch {
         }
         this.previousValue = this.searchField.val();
     }
-    /** Get Results - gets JSON data for search-term
+    /** Get Results - gets JSON data for liveSearcer()
      * 
      * Recieves search-term from liveSearcher() function.
      * fetches JSON data for all post types matching search and displays them in results.
-     * 
      */
-    getResults(){
-        $.when( // Fetch JSON data from REST API and store in arrays
-            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()),
-            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val()),
-            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/event?search=' + this.searchField.val()),
-            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/treatment?search=' + this.searchField.val()),
-            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/locale?search=' + this.searchField.val()),
-            $.getJSON(clinic_data.root_url + '/wp-json/wp/v2/employee?search=' + this.searchField.val())
-            ).then( (posts, pages, events, treatments, locales, employees)=> {
-                // Concatenate JSON data arrays into a single array
-                var result = posts[0].concat(pages[0], events[0], treatments[0], locales[0], employees[0]);
-                // Display search results
-                this.resultsDiv.html(`
-                <h2 class="search-overlay__section-title">Search Result</h2>
-                ${result.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
-                ${result.map(item => `<li><a href="${item.link}">${item.title.rendered}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
-                ${result.length ? '</ul>' : ''}
-            `);
-            // Loading icon flag
-            this.isLoadingVisible = false;
-        }, () => {
-            // Basic error handling
-            this.resultsDiv.html('<p>Unexpected Error, please try again.</p>');
+    getResults(){ 
+        $.getJSON(clinic_data.root_url + '/wp-json/clinic/v1/search?term=' + this.searchField.val(), (results) => {
+            this.resultsDiv.html(`
+              <div class="row">
+                <div class="one-third">
+                  <h2 class="search-overlay__section-title">Articles</h2>
+                  ${results.articles.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
+                  ${results.articles.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.articles.length ? '</ul>' : ''}
+                  
+                  <h2 class="search-overlay__section-title">Pages</h2>
+                  ${results.pages.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
+                  ${results.pages.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.pages.length ? '</ul>' : ''}
+                </div>
+
+                <div class="one-third">
+                  <h2 class="search-overlay__section-title">Locales</h2>
+                  ${results.locales.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
+                  ${results.locales.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.locales.length ? '</ul>' : ''}
+
+                  <h2 class="search-overlay__section-title">Employees</h2>
+                  ${results.employees.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
+                  ${results.employees.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.employees.length ? '</ul>' : ''}
+                </div>
+
+                <div class="one-third">
+                  <h2 class="search-overlay__section-title">Events</h2>
+                  ${results.events.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
+                  ${results.events.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.events.length ? '</ul>' : ''}
+
+                  <h2 class="search-overlay__section-title">Treatments</h2>
+                  ${results.treatments.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
+                  ${results.treatments.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.treatments.length ? '</ul>' : ''}
+                </div>
+              </div>
+            `)
         });
     }
 
