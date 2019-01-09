@@ -63,12 +63,13 @@ function clinic_search_results($data){
                 'img' => get_the_post_thumbnail_url(0, "employee-landscape")
             ));
         }        
-        // post_type: locales
-        if(get_post_type() == 'locales') {
+        // post_type: locale
+        if(get_post_type() == 'locale') {
             array_push($query_results['locales'], array(
                 'post_type' => get_post_type(),
                 'title' => get_the_title(),
-                'link' => get_the_permalink()
+                'link' => get_the_permalink(),
+                'id' => get_the_id()
             ));
         }        
         // post_type: event
@@ -93,29 +94,34 @@ function clinic_search_results($data){
     }
 
     // Logic for finding post_types with relationship to search-term
-    $locale_relationship_query = new WP_Query(array(
-        'post_type' => 'employee',
-        'meta_query' => array(
-            array(
+    if($query_results['locales']){
+        $locale_meta_query = array('relation' => 'OR');
+        
+        foreach($query_results['locales'] as $item) {
+            array_push($locale_meta_query, array(
                 'key' => 'related_locales',
                 'compare' => 'LIKE',
-                'value' => '"115"'
-            )
-        )
-    ));
-    // push relationship based search results onto JSON output array
-    while($locale_relationship_query->have_posts()) {
-        $locale_relationship_query->the_post();
-        if(get_post_type() == 'employee') {
-            array_push($query_results['employees'], array(
-                'post_type' => get_post_type(),
-                'title' => get_the_title(),
-                'link' => get_the_permalink(),
-                'img' => get_the_post_thumbnail_url(0, "employee-landscape")
+                'value' => '"' . $item['id'] . '"'
             ));
-        }     
-
+        }
+        $locale_relationship_query = new WP_Query(array(
+            'post_type' => 'employee',
+            'meta_query' => $locale_meta_query
+        ));
+        // push relationship based search results onto JSON output array
+        while($locale_relationship_query->have_posts()) {
+            $locale_relationship_query->the_post();
+            if(get_post_type() == 'employee') {
+                array_push($query_results['employees'], array(
+                    'post_type' => get_post_type(),
+                    'title' => get_the_title(),
+                    'link' => get_the_permalink(),
+                    'img' => get_the_post_thumbnail_url(0, "employee-landscape")
+                ));
+            }     
+        }
     }
+    
 
     $query_results['employees'] = array_unique($query_results['employees'], SORT_REGULAR);
 
