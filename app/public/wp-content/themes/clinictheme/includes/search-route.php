@@ -91,6 +91,34 @@ function clinic_search_results($data){
             ));
         }        
     }
+
+    // Logic for finding post_types with relationship to search-term
+    $locale_relationship_query = new WP_Query(array(
+        'post_type' => 'employee',
+        'meta_query' => array(
+            array(
+                'key' => 'related_locales',
+                'compare' => 'LIKE',
+                'value' => '"115"'
+            )
+        )
+    ));
+    // push relationship based search results onto JSON output array
+    while($locale_relationship_query->have_posts()) {
+        $locale_relationship_query->the_post();
+        if(get_post_type() == 'employee') {
+            array_push($query_results['employees'], array(
+                'post_type' => get_post_type(),
+                'title' => get_the_title(),
+                'link' => get_the_permalink(),
+                'img' => get_the_post_thumbnail_url(0, "employee-landscape")
+            ));
+        }     
+
+    }
+
+    $query_results['employees'] = array_unique($query_results['employees'], SORT_REGULAR);
+
     return $query_results;
 }
 
