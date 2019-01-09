@@ -133,8 +133,15 @@ class LiveSearch {
                   ${results.locales.length ? '</ul>' : ''}
 
                   <h2 class="search-overlay__section-title">Employees</h2>
-                  ${results.employees.length ? '<ul class="link-list min-list">' : `No matches, <a href="${clinic_data.root_url}/about-us/our-staff">View all employees</a>`}
-                  ${results.employees.map(item => `<li><a href="${item.link}">${item.title}</a></li>`).join('')}
+                  ${results.employees.length ? '<ul class="employee-cards">' : `No matches, <a href="${clinic_data.root_url}/about-us/our-staff">View all employees</a>`}
+                  ${results.employees.map(item => `
+                    <li class="employee-card__list-item">
+                      <a class="employee-card" href="${item.link}">
+                        <img class="employee-card__image" src="${item.img}">
+                        <span class="employee-card__name">${item.title}</span>
+                      </a>
+                    </li>
+                  `).join('')}
                   ${results.employees.length ? '</ul>' : ''}
                 </div>
 
