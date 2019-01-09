@@ -47,7 +47,7 @@ function clinic_post_types()
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-admin-multisite',
         'supports' => array(
-            'title', 'editor', 'thumbnail'
+            'title', 'thumbnail'
         ),
         'rewrite' => array('slug' => 'locales'),
         'labels' => array(

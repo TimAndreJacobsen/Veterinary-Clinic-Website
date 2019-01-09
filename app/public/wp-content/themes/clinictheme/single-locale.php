@@ -16,7 +16,7 @@ while (have_posts()) {
   </div>
 
   <div class="generic_content">
-    <?php the_content(); ?>
+    <?php the_field('main_body_content'); ?>
   </div>
 
   <div class="acf-map">
