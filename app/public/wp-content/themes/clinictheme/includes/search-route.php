@@ -73,10 +73,13 @@ function clinic_search_results($data){
         }        
         // post_type: event
         if(get_post_type() == 'event') {
+            $eventDate = new DateTime(get_field('event_date', false, false)); 
             array_push($query_results['events'], array(
                 'post_type' => get_post_type(),
                 'title' => get_the_title(),
-                'link' => get_the_permalink()
+                'link' => get_the_permalink(),
+                'month' => $eventDate->format('M'),
+                'day' => $eventDate->format('d')
             ));
         }        
         // post_type: treatment
