@@ -62,7 +62,7 @@ function clinic_search_results($data){
                 'link' => get_the_permalink(),
                 'img' => get_the_post_thumbnail_url(0, "employee-landscape")
             ));
-        }        
+        }
         // post_type: locale
         if(get_post_type() == 'locale') {
             array_push($query_results['locales'], array(
@@ -71,8 +71,7 @@ function clinic_search_results($data){
                 'link' => get_the_permalink(),
                 'id' => get_the_id()
             ));
-        }        
-        // post_type: event
+        }
         if(get_post_type() == 'event') {
             $eventDate = new DateTime(get_field('event_date', false, false)); 
             array_push($query_results['events'], array(
@@ -82,7 +81,8 @@ function clinic_search_results($data){
                 'month' => $eventDate->format('M'),
                 'day' => $eventDate->format('d')
             ));
-        }        
+        }
+
         // post_type: treatment
         if(get_post_type() == 'treatment') {
             array_push($query_results['treatments'], array(
@@ -96,7 +96,7 @@ function clinic_search_results($data){
     // Logic for finding post_types with relationship to search-term
     if($query_results['locales']){
         $locale_meta_query = array('relation' => 'OR');
-        
+
         foreach($query_results['locales'] as $item) {
             array_push($locale_meta_query, array(
                 'key' => 'related_locales',
@@ -105,12 +105,25 @@ function clinic_search_results($data){
             ));
         }
         $locale_relationship_query = new WP_Query(array(
-            'post_type' => 'employee',
+            'post_type' => array('employee', 'event'),
             'meta_query' => $locale_meta_query
         ));
+
         // push relationship based search results onto JSON output array
         while($locale_relationship_query->have_posts()) {
             $locale_relationship_query->the_post();
+
+            // post_type: event
+            if(get_post_type() == 'event') {
+                $eventDate = new DateTime(get_field('event_date', false, false)); 
+                array_push($query_results['events'], array(
+                    'post_type' => get_post_type(),
+                    'title' => get_the_title(),
+                    'link' => get_the_permalink(),
+                    'month' => $eventDate->format('M'),
+                    'day' => $eventDate->format('d')
+                ));
+            }
             if(get_post_type() == 'employee') {
                 array_push($query_results['employees'], array(
                     'post_type' => get_post_type(),
@@ -118,12 +131,13 @@ function clinic_search_results($data){
                     'link' => get_the_permalink(),
                     'img' => get_the_post_thumbnail_url(0, "employee-landscape")
                 ));
-            }     
+            }
         }
     }
     
-
+    // Trim duplicate results
     $query_results['employees'] = array_unique($query_results['employees'], SORT_REGULAR);
+    $query_results['events'] = array_unique($query_results['events'], SORT_REGULAR);
 
     return $query_results;
 }
