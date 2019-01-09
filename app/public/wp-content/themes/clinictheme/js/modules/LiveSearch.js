@@ -147,8 +147,19 @@ class LiveSearch {
 
                 <div class="one-third">
                   <h2 class="search-overlay__section-title">Events</h2>
-                  ${results.events.length ? '<ul class="link-list min-list">' : 'No matches'}
-                  ${results.events.map(item => `<li><a href="${item.link}">${item.title}</a></li>`).join('')}
+                  ${results.events.length ? '' : `No matches, <a href="${clinic_data.root_url}/events">View all events</a>`}
+                  ${results.events.map(item => `
+                    <div class="event-summary">
+                        <a class="event-summary__date t-center" href="${item.link}">
+                        <span class="event-summary__month">${item.month}</span>
+                        <span class="event-summary__day">${item.day}</span></a>
+                        <div class="event-summary__content">
+                            <h5 class="event-summary__title headline headline--tiny"><a href="${item.link}">
+                            ${item.title}</a></h5>
+                            <p><a href="${item.link}" class="nu c-blue"></a></p>
+                        </div>
+                    </div>                  
+                  `).join('')}
                   ${results.events.length ? '</ul>' : ''}
 
                   <h2 class="search-overlay__section-title">Treatments</h2>
