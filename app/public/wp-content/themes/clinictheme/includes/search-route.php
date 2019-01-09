@@ -25,7 +25,8 @@ function clinic_search_results($data){
 
     // create empty array structure
     $query_results = array(
-        'posts_pages' => array(),
+        'articles' => array(),
+        'pages' => array(),
         'employees' => array(),
         'locales' => array(),
         'events' => array(),
@@ -36,9 +37,16 @@ function clinic_search_results($data){
     while($main_query->have_posts()){
         $main_query->the_post();
 
-        // post_type: post and page
-        if(get_post_type() == 'post' OR get_post_type() == 'page') {
-            array_push($query_results['posts_pages'], array(
+        // post_type: post (articles)
+        if(get_post_type() == 'post') {
+            array_push($query_results['articles'], array(
+                'title' => get_the_title(),
+                'link' => get_the_permalink()
+            ));
+        }
+        // post_type: page
+        if(get_post_type() == 'page') {
+            array_push($query_results['pages'], array(
                 'title' => get_the_title(),
                 'link' => get_the_permalink()
             ));
