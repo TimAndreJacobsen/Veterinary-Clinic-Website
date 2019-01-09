@@ -15,7 +15,7 @@ function clinic_register_search(){
  * @param data search term input
  * @return JSON_array structured JSON data
  * 
- * returns a JSON data structure and populates it by categories
+ * Populated a JSON data structure and returns it
  */
 function clinic_search_results($data){
     $main_query = new WP_Query(array(
@@ -46,6 +46,7 @@ function clinic_search_results($data){
                 'link' => get_the_permalink()
             ));
         }
+
         // post_type: page
         if(get_post_type() == 'page') {
             array_push($query_results['pages'], array(
@@ -54,6 +55,7 @@ function clinic_search_results($data){
                 'link' => get_the_permalink()
             ));
         }
+        
         // post_type: employee
         if(get_post_type() == 'employee') {
             array_push($query_results['employees'], array(
@@ -63,6 +65,7 @@ function clinic_search_results($data){
                 'img' => get_the_post_thumbnail_url(0, "employee-landscape")
             ));
         }
+
         // post_type: locale
         if(get_post_type() == 'locale') {
             array_push($query_results['locales'], array(
@@ -72,6 +75,8 @@ function clinic_search_results($data){
                 'id' => get_the_id()
             ));
         }
+
+        // post_type: event
         if(get_post_type() == 'event') {
             $eventDate = new DateTime(get_field('event_date', false, false)); 
             array_push($query_results['events'], array(
