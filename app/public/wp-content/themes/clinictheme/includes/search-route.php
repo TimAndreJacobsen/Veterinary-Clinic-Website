@@ -10,9 +10,10 @@ function clinic_register_search(){
     )); 
 }
 
-function clinic_search_results(){
+function clinic_search_results($data){
     $employees = new WP_Query(array(
-        'post_type' => 'employee'
+        'post_type' => 'employee',
+        's' => sanitize_text_field($data['term']) //sanitize_text_field() = WP function to sanitize user input, prevent SQL injection.
     ));
 
     $employee_result = array();
