@@ -105,7 +105,6 @@ class LiveSearch {
         }
         this.previousValue = this.searchField.val();
     }
-
     /** Get Results - gets JSON data for search-term
      * 
      * Recieves search-term from liveSearcher() function.
@@ -127,7 +126,7 @@ class LiveSearch {
                 this.resultsDiv.html(`
                 <h2 class="search-overlay__section-title">Search Result</h2>
                 ${result.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
-                ${result.map(item => `<li><a href="${item.link}">${item.title.rendered}</a></li>`).join('')}
+                ${result.map(item => `<li><a href="${item.link}">${item.title.rendered}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
                 ${result.length ? '</ul>' : ''}
             `);
             // Loading icon flag
