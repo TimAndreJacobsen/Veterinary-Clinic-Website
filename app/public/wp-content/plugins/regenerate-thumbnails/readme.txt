@@ -70,7 +70,8 @@ This plugin does not log nor transmit any user data. Infact it doesn't even do a
 
 = Version 3.1.0 =
 
-* Re-enable the ability to delete old, unregistered thumbnail files. It was temporarily disabled until I was more confident in the separate update post functionality but fixing that is turning out to be rather complicated.
+* Bring back the ability to delete old, unregistered thumbnail sizes. Support for updating post contents is still disabled (too buggy).
+* Various code improvements including string localization disambiguation.
 
 = Version 3.0.2 =
 
