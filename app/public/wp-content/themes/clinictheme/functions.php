@@ -1,5 +1,8 @@
 <?php
 
+/* INCLUDES */
+require get_theme_file_path('/includes/search-route.php');
+
 /**
  * page_banner() handles banner area of a page.
  * If no $args are passed, the function will use default values.
