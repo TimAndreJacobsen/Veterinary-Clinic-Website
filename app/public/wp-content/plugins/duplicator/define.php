@@ -2,7 +2,8 @@
 //Prevent directly browsing to the file
 if (function_exists('plugin_dir_url')) 
 {		
-    define('DUPLICATOR_VERSION',        '1.3.0');
+    define('DUPLICATOR_VERSION',        '1.3.2');
+	define('DUPLICATOR_VERSION_BUILD',  '2018-12-29_10:15');
     define('DUPLICATOR_PLUGIN_URL',     plugin_dir_url(__FILE__));
 	define('DUPLICATOR_SITE_URL',		get_site_url());
 	

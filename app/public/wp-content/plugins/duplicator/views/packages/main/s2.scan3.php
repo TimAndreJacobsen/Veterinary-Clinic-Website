@@ -108,7 +108,7 @@ TOTAL SIZE -->
 									<input type="checkbox" name="dir_paths[]" value="{{directory.dir}}" id="lf_dir_{{@index}}" onclick="Duplicator.Pack.filesOff(this)" />
 								{{/if}}
 								<label for="lf_dir_{{@index}}" title="{{directory.dir}}">
-									<i class="size">[{{directory.size}}]</i> /{{directory.sdir}}/
+									<i class="size">[{{directory.size}}]</i> {{directory.sdir}}/
 								</label> <br/>
 								<div class="files">
 									{{#each directory.files as |file|}}	
@@ -250,7 +250,7 @@ FILE NAME CHECKS -->
 								
 								<label for="nc1_dir_{{@index}}" title="{{directory.dir}}">
 									<i class="count">({{directory.count}})</i>
-									/{{directory.sdir}}/
+									{{directory.sdir}}/
 								</label> <br/>
 								<div class="files">
 									{{#each directory.files}}
@@ -444,7 +444,7 @@ DATABASE -->
 			echo '</div>';
 			echo '<br/>';
 
-			$lnk = '<a href="https://snapcreek.com/duplicator/docs/quick-start#quick-060-q" target="_blank">' . esc_html__('covered here.', 'duplicator') . '</a>';
+			$lnk = '<a href="https://snapcreek.com/duplicator/docs/quick-start?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=da_size_two_part&utm_campaign=duplicator_pro#quick-060-q" target="_blank">' . esc_html__('covered here.', 'duplicator') . '</a>';
 			printf(__("- Perform a two part install %s", 'duplicator'), $lnk);
 			echo '<br/><br/>';
 
