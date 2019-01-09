@@ -42,6 +42,7 @@ function clinic_search_results($data){
             array_push($query_results['articles'], array(
                 'post_type' => get_post_type(),
                 'title' => get_the_title(),
+                'author_name' => get_the_author(),
                 'link' => get_the_permalink()
             ));
         }
