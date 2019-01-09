@@ -116,37 +116,37 @@ class LiveSearch {
               <div class="row">
                 <div class="one-third">
                   <h2 class="search-overlay__section-title">Articles</h2>
-                  ${results.articles.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
-                  ${results.articles.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.articles.length ? '<ul class="link-list min-list">' : ''}
+                  ${results.articles.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.post_type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
                   ${results.articles.length ? '</ul>' : ''}
                   
                   <h2 class="search-overlay__section-title">Pages</h2>
-                  ${results.pages.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
-                  ${results.pages.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.pages.length ? '<ul class="link-list min-list">' : ''}
+                  ${results.pages.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.post_type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
                   ${results.pages.length ? '</ul>' : ''}
                 </div>
 
                 <div class="one-third">
                   <h2 class="search-overlay__section-title">Locales</h2>
-                  ${results.locales.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
-                  ${results.locales.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.locales.length ? '<ul class="link-list min-list">' : ''}
+                  ${results.locales.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.post_type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
                   ${results.locales.length ? '</ul>' : ''}
 
                   <h2 class="search-overlay__section-title">Employees</h2>
-                  ${results.employees.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
-                  ${results.employees.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.employees.length ? '<ul class="link-list min-list">' : ''}
+                  ${results.employees.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.post_type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
                   ${results.employees.length ? '</ul>' : ''}
                 </div>
 
                 <div class="one-third">
                   <h2 class="search-overlay__section-title">Events</h2>
-                  ${results.events.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
-                  ${results.events.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.events.length ? '<ul class="link-list min-list">' : ''}
+                  ${results.events.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.post_type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
                   ${results.events.length ? '</ul>' : ''}
 
                   <h2 class="search-overlay__section-title">Treatments</h2>
-                  ${results.treatments.length ? '<ul class="link-list min-list">' : '<p>No results matches the search</p>'}
-                  ${results.treatments.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
+                  ${results.treatments.length ? '<ul class="link-list min-list">' : ''}
+                  ${results.treatments.map(item => `<li><a href="${item.link}">${item.title}</a> ${item.post_type == 'post' ? `by ${item.author_name}` : ``}</li>`).join('')}
                   ${results.treatments.length ? '</ul>' : ''}
                 </div>
               </div>
