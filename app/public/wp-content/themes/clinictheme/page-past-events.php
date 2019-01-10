@@ -24,7 +24,7 @@ $pastEvents = new WP_Query(array(
       ))));
 while ($pastEvents->have_posts()) {
     $pastEvents->the_post();  
-    get_template_part('template-parts/events');
+    get_template_part('template-parts/content', get_post_type());
 }
     echo paginate_links(array(
         'total' => $pastEvents->max_num_pages

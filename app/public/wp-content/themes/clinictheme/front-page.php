@@ -35,7 +35,7 @@ get_header(); ?>
         ));
         while ($frontpageEvents->have_posts()) {
             $frontpageEvents->the_post();
-            get_template_part('template-parts/events');
+            get_template_part('template-parts/content', get_post_type());
         } wp_reset_postdata(); ?>
 
       <p class="t-center no-margin"><a href="<?php echo get_post_type_archive_link('event') ?>" class="btn btn--blue">View
@@ -53,7 +53,7 @@ get_header(); ?>
       ));
       while ($frontpagePosts->have_posts()) {
         $frontpagePosts->the_post(); 
-        get_template_part('template-parts/articles');
+        get_template_part('template-parts/content', get_post_type());
       } wp_reset_postdata(); ?>
 
       <p class="t-center no-margin"><a href="<?php echo esc_url(site_url('/articles')); ?>" class="btn btn--blue">View All Posted
