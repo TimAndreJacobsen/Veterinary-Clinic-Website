@@ -4,6 +4,7 @@
  * Can be called with get_template_part('template-parts/events')
  */ ?>
  
+
 <div class="event-summary">
         <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
           <span class="event-summary__month">
