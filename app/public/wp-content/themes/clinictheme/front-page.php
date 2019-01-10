@@ -9,7 +9,8 @@ get_header(); ?>
     <h1 class="headline headline--large">Welcome</h1>
     <h2 class="headline headline--medium">To the Clinic</h2>
     <h3 class="headline headline--small">Browse our services and book an appointment</h3>
-    <a href="<?php echo site_url('/snake') ?>" class="btn btn--large btn--blue">Book an Appointment</a>
+    <a href="<?php echo esc_url(site_url('/snake')); ?>" class="btn btn--large btn--blue">Book an Appointment</a>
+    <?php /* esc_url() Security: Whenever manually echoing from the database. Prevents hacked website from endangering users */ ?>
   </div>
 </div>
 
@@ -55,7 +56,7 @@ get_header(); ?>
         get_template_part('template-parts/articles');
       } wp_reset_postdata(); ?>
 
-      <p class="t-center no-margin"><a href="<?php echo site_url('/articles') ?>" class="btn btn--blue">View All Posted
+      <p class="t-center no-margin"><a href="<?php echo esc_url(site_url('/articles')); ?>" class="btn btn--blue">View All Posted
           Articles</a></p>
     </div>
   </div>
