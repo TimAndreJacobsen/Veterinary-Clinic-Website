@@ -50,6 +50,7 @@ class LiveSearch {
             this.searchField.val('');
             setTimeout( () => this.searchField.focus(), 301 );
             this.isOverlayOpen = true;
+            return false; // magic oneliner to prevent <a href="link">(our non-JS fallback search) from firing if user has JS enabled.
         }
     }
 
