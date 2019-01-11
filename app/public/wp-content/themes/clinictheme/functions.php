@@ -145,9 +145,28 @@ function hide_admin_subscriber() {
     }
 }
 
+/***** Functions for customizing login page *****/
+function clinic_header_url() { // Link to frontpage instead of WP - gets rid of WP link
+    return esc_url(site_url('/'));
+}
+function login_css_image(){ // Use custom CSS instead of WP - gets rid of logo
+    wp_enqueue_style('clinic_styles', get_stylesheet_uri(), NULL, microtime());
+}
+function login_title() { // Use custom text instead of WP - gets rid of "powered by..." text
+    return 'The Clinic';
+}
+
+
 /**
  * Hooks and scripts
+ * 
+ * 
  */
+
+// customize login screen
+add_filter('login_headertitle', 'login_title');
+add_filter('login_headerurl', 'clinic_header_url');
+add_action('login_enqueue_scripts', 'login_css_image');
 // Hide admin bar for subsriber only accounts
 add_action('wp_loaded', 'hide_admin_subscriber');
 // Redirect subscriber accounts from wp-admin to homepage
