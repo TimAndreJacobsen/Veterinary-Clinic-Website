@@ -20,14 +20,16 @@
                 'theme_location' => 'header_menu_location'
               ));
               ?>
-
         </nav>
+
         <div class="site-header__util">
-          <?php if( is_user_logged_in() ) { ?>
+          <?php if( is_user_logged_in() ) { /* LOGGED IN */ ?>
+            <a href="<?php echo esc_url(site_url('/my-pets.php')); ?>" class="btn btn--small btn--blue float-left push-right">My Pets</a>
             <a href="<?php echo wp_logout_url(); ?>" class="btn btn--small  btn--blue float-left btn--with-photo">
             <span class="site-header__avatar"><?php echo get_avatar(get_current_user_id(), 60); ?></span>
             <span class="btn__text">Log Out</span></a>
-      <?php  } else { ?>
+
+      <?php  } else { /* LOGGED OUT */ ?>
             <a href="<?php echo esc_url(site_url('/wp-login.php')); ?>" class="btn btn--small btn--blue float-left push-right">Login</a>
             <a href="<?php echo wp_registration_url(); ?>" class="btn btn--small  btn--blue float-left">Sign Up</a>
           <?php } ?>
