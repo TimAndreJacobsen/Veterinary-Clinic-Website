@@ -138,9 +138,18 @@ function redirect_sub_to_frontend(){
     }
 }
 
+function hide_admin_subscriber() {
+    $current_user = wp_get_current_user();
+    if(count($current_user->roles) == 1 AND $current_user->roles[0] == 'subscriber') {
+        show_admin_bar(false);
+    }
+}
+
 /**
  * Hooks and scripts
  */
+// Hide admin bar for subsriber only accounts
+add_action('wp_loaded', 'hide_admin_subscriber');
 // Redirect subscriber accounts from wp-admin to homepage
 add_action('admin_init', 'redirect_sub_to_frontend');
 /* Add CSS and JS to be handled by Wordpress */
