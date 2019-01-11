@@ -151,6 +151,7 @@ function clinic_header_url() { // Link to frontpage instead of WP - gets rid of 
 }
 function login_css_image(){ // Use custom CSS instead of WP - gets rid of logo
     wp_enqueue_style('clinic_styles', get_stylesheet_uri(), NULL, microtime());
+    wp_enqueue_style('font_google_roboto', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
 }
 function login_title() { // Use custom text instead of WP - gets rid of "powered by..." text
     return 'The Clinic';
@@ -162,7 +163,6 @@ function login_title() { // Use custom text instead of WP - gets rid of "powered
  * 
  * 
  */
-
 // customize login screen
 add_filter('login_headertitle', 'login_title');
 add_filter('login_headerurl', 'clinic_header_url');
