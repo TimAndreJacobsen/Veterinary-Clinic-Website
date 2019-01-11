@@ -125,8 +125,24 @@ function clinic_custom_rest() {
 }
 
 /**
+ * Redirect subscriber accounts from wp-admin to homepage
+ * Pull current user role information and checks for 2 conditions:
+ * Is users role subscriber AND is that the only role.
+ * Redirects users to frontpage after logging in
+ */
+function redirect_sub_to_frontend(){
+    $current_user = wp_get_current_user();
+    if(count($current_user->roles) == 1 AND $current_user->roles[0] == 'subscriber') {
+        wp_redirect(site_url('/'));
+        exit;
+    }
+}
+
+/**
  * Hooks and scripts
  */
+// Redirect subscriber accounts from wp-admin to homepage
+add_action('admin_init', 'redirect_sub_to_frontend');
 /* Add CSS and JS to be handled by Wordpress */
 add_action('wp_enqueue_scripts', 'clinic_resources');
 /* function to load CSS and JavaScript */
