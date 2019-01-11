@@ -918,17 +918,15 @@ p, li {
 body.login .button-primary {
   background-color: #0D3B66;
   border-color: rgb(0, 0, 0);
-  text-shadow: 0 -1px 1px rgb(212, 82, 56),1px 0 1px rgb(212, 82, 56),0 1px 1px rgb(212, 82, 56),-1px 0 1px rgb(212, 82, 56);
-  box-shadow: 0 1px 0 rgb(199, 80, 56);
 }
 
 body.login .button-primary:hover,
 body.login .button-primary:active,
 body.login .button-primary:focus {
-  background-color: rgb(232, 85, 56);
-  border-color: rgb(212, 82, 56);
-  text-shadow: 0 -1px 1px rgb(199, 80, 56),1px 0 1px rgb(199, 80, 56),0 1px 1px rgb(199, 80, 56),-1px 0 1px rgb(199, 80, 56);
-  box-shadow: 0 1px 0 rgb(186, 78, 56);
+  background-color: #0D3B66;
+  border-color: rgb(0, 0, 0);
+  text-shadow: 0 -1px 1px rgb(0, 0, 0),1px 0 1px rgb(0, 0, 0),0 1px 1px rgb(0, 0, 0),-1px 0 1px rgb(0, 0, 0);
+  box-shadow: 0 1px 0 rgb(0, 0, 0);
 }
 
 body.login {
