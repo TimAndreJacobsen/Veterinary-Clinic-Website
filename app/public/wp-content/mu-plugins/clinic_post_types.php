@@ -11,6 +11,8 @@ function clinic_post_types()
         'supports' => array(
             'title', 'editor', 'excerpt'
         ),
+        'capability_type' => 'event',
+        'map_meta_cap' => true,
         'rewrite' => array('slug' => 'events'),
         'labels' => array(
             'name' => 'Events',
@@ -30,6 +32,8 @@ function clinic_post_types()
         'supports' => array(
             'title', 'editor'
         ),
+        'capability_type' => 'treatment',
+        'map_meta_cap' => true,
         'rewrite' => array('slug' => 'treatments'),
         'labels' => array(
             'name' => 'Treatments',
@@ -68,6 +72,8 @@ function clinic_post_types()
         'supports' => array(
             'title', 'editor',
         ),
+        'capability_type' => 'poi',
+        'map_meta_cap' => true,
         'rewrite' => array('slug' => 'poi'),
         'labels' => array(
             'name' => 'Point of Interest',
@@ -87,6 +93,8 @@ function clinic_post_types()
         'supports' => array(
             'title', 'editor', 'thumbnail'
         ),
+        'capability_type' => 'employee',
+        'map_meta_cap' => true,
         'rewrite' => array('slug' => 'employees'),
         'labels' => array(
             'name' => 'Employees',
