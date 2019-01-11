@@ -104,6 +104,27 @@ function clinic_post_types()
             'singular_name' => 'employee',
         )
     ));
+
+    // Pet Post Type
+    register_post_type('pet', array(
+        'public' => false,
+        'show_ui' => true,
+        //'has_archive' => true,
+        'show_in_rest' => true,
+        'menu_icon' => 'dashicons-format-aside',
+        'supports' => array(
+            'title', 'editor', 'thumbnail'
+        ),
+        'capability_type' => 'pet',
+        'map_meta_cap' => true,
+        'labels' => array(
+            'name' => 'Pets',
+            'add_new_item' => 'Add new pet',
+            'edit_item' => 'Edit pet',
+            'all_items' => 'all pets',
+            'singular_name' => 'pet',
+        )
+    ));
 }
 
 add_action('init', 'clinic_post_types');
