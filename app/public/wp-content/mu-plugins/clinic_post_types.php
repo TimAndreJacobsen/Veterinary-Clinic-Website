@@ -107,9 +107,8 @@ function clinic_post_types()
 
     // Pet Post Type
     register_post_type('pet', array(
-        'public' => false,
-        'show_ui' => true,
-        //'has_archive' => true,
+        'public' => true,
+        'has_archive' => true,
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-format-aside',
         'supports' => array(
@@ -118,13 +117,17 @@ function clinic_post_types()
         'capability_type' => 'pet',
         'map_meta_cap' => true,
         'labels' => array(
-            'name' => 'Pets',
+            'name' => 'Pet',
             'add_new_item' => 'Add new pet',
             'edit_item' => 'Edit pet',
             'all_items' => 'all pets',
             'singular_name' => 'pet',
         )
     ));
+
+    // TODO: Add post_type Owner - which syncs up with a registered user
+    // Cannot create a relationship between registered_user and pet_post_type. Relationship only avaliable between different post_types.
+    // GOAL: For a owner to be able to track their pets online. For staff to be able to update information.
 }
 
 add_action('init', 'clinic_post_types');
