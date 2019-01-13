@@ -22,10 +22,17 @@ while (have_posts()) {
 
             while ($user_pets->have_posts()) {
                 $user_pets->the_post(); ?>
-                <li>
-                    <input class="note-title-field" value="<?php echo esc_attr(get_the_title()); ?>">
-                    <textarea class="note-body-field"><?php echo esc_attr(get_the_content()); ?></textarea>
-                </li>
+                <div class="generic_content">
+                    <div class="row group"> 
+                        <div class="one-third"> <?php /* Pet thumbnail */
+                            the_post_thumbnail('employee-portrait'); ?>
+                        </div>
+
+                        <div class="two-thirds"><?php /* Pet Bio text */ 
+                            the_content(); ?>
+                        </div>
+                    </div>
+                </div> <br>
 
 
             <?php }
