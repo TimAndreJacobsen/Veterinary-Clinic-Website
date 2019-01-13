@@ -107,7 +107,8 @@ function clinic_post_types()
 
     // Pet Post Type
     register_post_type('pet', array(
-        'public' => true,
+        'public' => false, // setting this to false makes them private and hides from public queries and search results. But this also hides post_type in admin dashboard, fixed by show_ui => true
+        'show_ui' => true, // Enabling pet post_type in admin dashboard
         'has_archive' => true,
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-format-aside',
@@ -125,7 +126,7 @@ function clinic_post_types()
         )
     ));
 
-    // TODO: Add post_type Owner - which syncs up with a registered user
+    // TODO: Add post_type Owner - which syncs up with a registered user  ??? Will this be necessary?
     // Cannot create a relationship between registered_user and pet_post_type. Relationship only avaliable between different post_types.
     // GOAL: For a owner to be able to track their pets online. For staff to be able to update information.
 }
