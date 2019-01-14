@@ -126,6 +126,25 @@ function clinic_post_types()
         )
     ));
 
+
+    // Note Post Type
+    register_post_type('note', array(
+        'public' => false,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'menu_icon' => 'dashicons-welcome-write-blog',
+        'supports' => array(
+            'title', 'editor',
+        ),
+        'labels' => array(
+            'name' => 'Notes',
+            'add_new_item' => 'Add new note',
+            'edit_item' => 'Edit note',
+            'all_items' => 'all notes',
+            'singular_name' => 'note',
+        )
+    ));
+
     // TODO: Add post_type Owner - which syncs up with a registered user  ??? Will this be necessary?
     // Cannot create a relationship between registered_user and pet_post_type. Relationship only avaliable between different post_types.
     // GOAL: For a owner to be able to track their pets online. For staff to be able to update information.
