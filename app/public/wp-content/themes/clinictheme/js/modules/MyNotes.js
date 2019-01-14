@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 class MyNotes {
     constructor() {
-        
+        this.events();
     }
 
     events() {
@@ -11,9 +11,19 @@ class MyNotes {
 
     // Functions / Methods
     deleteNote() {
-        alert("BLAH");
+        $.ajax({
+            url: clinic_data.root_url + '/wp-json/wp/v2/note/205',
+            type: 'DELETE',
+            success: (response)=> {
+                console.log("Delete successfull");
+                console.log(response)
+            },
+            error: (response) => {
+                console.log("Delete ERROR");
+                console.log(response)
+            }
+        })
     }
-
 
 
 }
