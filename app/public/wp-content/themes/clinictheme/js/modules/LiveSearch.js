@@ -23,7 +23,9 @@ class LiveSearch {
         this.delayMilliseconds = 1000; // Delay in typing before sending search request
     }
 
-    // ----- Events ----- ----- ----- -----
+    // =================================================================
+    //                       Events
+    // =================================================================
 
     events(){
         // On mouse click events
@@ -35,7 +37,9 @@ class LiveSearch {
         this.searchField.on("keyup", this.liveSearcher.bind(this));
     }
 
-    // ----- Functions/Methods ----- ----- ----- -----
+    // =================================================================
+    //                       Functions
+    // =================================================================
 
     /** Opens Overlay and sets focus to search field
      * 301ms timeout because of fade effect(300ms)
