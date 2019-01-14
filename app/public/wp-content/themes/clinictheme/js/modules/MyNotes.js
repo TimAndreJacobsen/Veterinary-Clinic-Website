@@ -10,8 +10,9 @@ class MyNotes {
     // =================================================================
 
     events() {
-        $(".delete-note").on("click", this.deleteNote);
-        $(".edit-note").on("click", this.editNote.bind(this));
+        $(".delete-note").on("click", this.deleteNote);            // delete btn
+        $(".edit-note").on("click", this.editNote.bind(this));     // edit btn
+        $(".update-note").on("click", this.updateNote.bind(this)); // save btn
     }
 
     // =================================================================
@@ -33,6 +34,31 @@ class MyNotes {
             },
             error: (response) => {
                 console.log("Delete ERROR");
+                console.log(response);
+            }
+        })
+    }
+
+    updateNote(e) {
+        var thisNote = $(e.target).parents("li");
+        var noteUpdated = {
+            'title': thisNote.find(".note-title-field").val(),
+            'content': thisNote.find(".note-body-field").val()
+        }
+        $.ajax({
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader('X-WP-Nonce', clinic_data.nonce);
+            },
+            url: clinic_data.root_url + '/wp-json/wp/v2/note/' + thisNote.data('id'),
+            type: 'POST', 
+            data: noteUpdated,
+            success: (response)=> {
+                this.makeNoteReadOnly(thisNote);
+                console.log("post/update successfull");
+                console.log(response);
+            },
+            error: (response) => {
+                console.log("post/update ERROR");
                 console.log(response);
             }
         })
