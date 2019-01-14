@@ -13,6 +13,7 @@ class MyNotes {
         $(".delete-note").on("click", this.deleteNote);            // delete btn
         $(".edit-note").on("click", this.editNote.bind(this));     // edit btn
         $(".update-note").on("click", this.updateNote.bind(this)); // save btn
+        $(".submit-note").on("click", this.createNote.bind(this)); // new btn
     }
 
     // =================================================================
@@ -41,7 +42,7 @@ class MyNotes {
 
     updateNote(e) {
         var thisNote = $(e.target).parents("li");
-        var noteUpdated = {
+        var noteUpdates = {
             'title': thisNote.find(".note-title-field").val(),
             'content': thisNote.find(".note-body-field").val()
         }
@@ -51,9 +52,35 @@ class MyNotes {
             },
             url: clinic_data.root_url + '/wp-json/wp/v2/note/' + thisNote.data('id'),
             type: 'POST', 
-            data: noteUpdated,
+            data: noteUpdates,
             success: (response)=> {
                 this.makeNoteReadOnly(thisNote);
+                console.log("post/update successfull");
+                console.log(response);
+            },
+            error: (response) => {
+                console.log("post/update ERROR");
+                console.log(response);
+            }
+        })
+    }
+
+    createNote(e) {
+        var newNote = {
+            'title': $(".new-note-title").val(),
+            'content': $(".new-note-body").val(),
+            'status': 'publish'
+        }
+        $.ajax({
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader('X-WP-Nonce', clinic_data.nonce);
+            },
+            url: clinic_data.root_url + '/wp-json/wp/v2/note/',
+            type: 'POST', 
+            data: newNote,
+            success: (response)=> {
+                $(".new-note-title, .new-note-body").val('');
+                $('<li>TODO: Put actual notes here isntead of filler!</li>').prependTo("#my-notes").hide().slideDown();
                 console.log("post/update successfull");
                 console.log(response);
             },
