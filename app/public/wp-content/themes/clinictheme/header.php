@@ -25,6 +25,7 @@
         <div class="site-header__util">
           <?php if( is_user_logged_in() ) { /* LOGGED IN */ ?>
             <a href="<?php echo esc_url(site_url('/my-pets')); ?>" class="btn btn--small btn--blue float-left push-right">My Pets</a>
+            <a href="<?php echo esc_url(site_url('/notes')); ?>" class="btn btn--small btn--blue float-left push-right">My Notes</a>
             <a href="<?php echo wp_logout_url(); ?>" class="btn btn--small  btn--blue float-left btn--with-photo">
             <span class="site-header__avatar"><?php echo get_avatar(get_current_user_id(), 60); ?></span>
             <span class="btn__text">Log Out</span></a>
@@ -36,6 +37,6 @@
 
           <a href="<?php echo esc_url(site_url('/search')) ?>" class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></a>
         </div>
-      </div>
+      </div>z
     </div>
   </header>
