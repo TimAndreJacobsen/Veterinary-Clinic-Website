@@ -50,7 +50,8 @@ function clinic_resources(){
     wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyDzoEZVm8qLGy6Pog5Ob-xfh3Cv5YgwgrM', NULL, '1.0', true);
     wp_enqueue_script('clinic_js', get_theme_file_uri('/js/scripts-bundled.js'), NULL, microtime(), true);
     wp_localize_script('clinic_js', 'clinic_data', array(
-        'root_url' => get_site_url()
+        'root_url' => get_site_url(),
+        'nonce' => wp_create_nonce('wp_rest')  // nonce = rng number created at login. Used to prove login status(admin status for delete over JSON for example)
     ));
     /* CSS */
     wp_enqueue_style('font_google_roboto', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
