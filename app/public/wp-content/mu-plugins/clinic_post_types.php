@@ -113,7 +113,7 @@ function clinic_post_types()
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-format-aside',
         'supports' => array(
-            'title', 'editor', 'thumbnail'
+            'title', 'editor', 'thumbnail', 'author'
         ),
         'capability_type' => 'pet',
         'map_meta_cap' => true,
