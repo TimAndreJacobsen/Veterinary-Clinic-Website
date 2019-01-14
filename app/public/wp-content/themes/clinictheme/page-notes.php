@@ -17,9 +17,14 @@ page_banner();
         'posts_per_page' => -1,
         'author' => get_current_user_id()
       ));
-      
-    
-    ?>
+      while($user_notes->have_posts()) {
+        $user_notes->the_post(); ?>
+        <li>
+          <input class="note-title-field" value="<?php echo esc_attr(get_the_title()); ?>">
+          <textarea class="note-body-field"><?php echo esc_attr(get_the_content()); ?></textarea>
+        </li>
+
+      <?php } ?>
     
   
   </ul>
