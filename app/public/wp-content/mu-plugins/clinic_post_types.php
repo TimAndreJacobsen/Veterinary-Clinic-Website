@@ -134,7 +134,7 @@ function clinic_post_types()
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-welcome-write-blog',
         'supports' => array(
-            'title', 'editor',
+            'title', 'editor', 'author'
         ),
         'labels' => array(
             'name' => 'Notes',
