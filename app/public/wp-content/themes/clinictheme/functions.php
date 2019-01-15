@@ -123,6 +123,9 @@ function clinic_custom_rest() {
     register_rest_field('post', 'author_name', array(
         'get_callback' => function(){return get_the_author();}
     ));
+    register_rest_field('note', 'user_note_count', array(
+        'get_callback' => function(){return count_user_posts(get_current_user_id(), 'note');}
+    ));
 }
 
 /**
@@ -173,7 +176,7 @@ function login_title() { // Use custom text instead of WP - gets rid of "powered
 function make_note_private($data, $post_array) {
     if ($data['post_type'] == 'note') {
         if (count_user_posts(get_current_user_id(), 'note') > 9 AND !$post_array['ID']) {
-            die("Per user note limit is 10 notes, please delete a post to free up space.");
+            die("Per user note limit is 10 notes, please delete a note to free up space.");
         }
 
         $data['post_title'] = sanitize_text_field($data['post_title']);
