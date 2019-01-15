@@ -158,12 +158,24 @@ function login_title() { // Use custom text instead of WP - gets rid of "powered
     return 'The Clinic';
 }
 
-
 /**
+ * Intercepts incoming requests and enforces "private" status on post_type note.
+ * This prevents client side custom JavaScript from sending modified requests to break privacy.
+ *  @param = incoming REST API request. create, read, update, delete note.
+ *  @return = returns $data with enforced private or trash status
+ */
+function make_note_private($data) {
+    if ($data['post_type'] == 'note' AND $data['post_status'] != 'trash') {
+        $data['post_status'] = "private";
+    }
+    return $data;
+}
+
+
+/****************************************************************
  * Hooks and scripts
  * 
- * 
- */
+ ****************************************************************/
 // customize login screen
 add_filter('login_headertitle', 'login_title');
 add_filter('login_headerurl', 'clinic_header_url');
@@ -172,15 +184,21 @@ add_action('login_enqueue_scripts', 'login_css_image');
 add_action('wp_loaded', 'hide_admin_subscriber');
 // Redirect subscriber accounts from wp-admin to homepage
 add_action('admin_init', 'redirect_sub_to_frontend');
+
 /* Add CSS and JS to be handled by Wordpress */
 add_action('wp_enqueue_scripts', 'clinic_resources');
 /* function to load CSS and JavaScript */
 add_action('after_setup_theme', 'clinic_features');
+
 /* hooking custom queries to Wordpress */
 add_action('pre_get_posts', 'clinic_custom_queries');
+
 /* Google maps API key */
 add_filter('acf/fields/google_map/api', 'acf_google_maps_API_key');
+
 /* REST API hook */
 add_action('rest_api_init', 'clinic_custom_rest');
+// Force post_types: note to be private
+add_filter('wp_insert_post_data', 'make_note_private');
 
 ?>
