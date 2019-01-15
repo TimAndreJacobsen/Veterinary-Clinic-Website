@@ -12,7 +12,7 @@ get_header(); ?>
     <a href="<?php echo esc_url(site_url('/snake')); ?>" class="btn btn--large btn--blue">Book an Appointment</a>
     <?php /* esc_url() Security: Whenever manually echoing from the database. Prevents hacked website from endangering users */ ?>
   </div>
-</div>asdfasdfasdf
+</div>asdfasdfasdfasdfasdf
 
 <div class="full-width-split group">
   <div class="full-width-split__one">
