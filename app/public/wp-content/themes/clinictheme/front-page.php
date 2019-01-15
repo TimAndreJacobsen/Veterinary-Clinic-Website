@@ -6,13 +6,13 @@ get_header(); ?>
   <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/dogs-whitebg.jpg') ?>);">
   </div>
   <div class="page-banner__content container t-center c-white">
-    <h1 class="headline headline--large">Welcomeasdf</h1>
-    <h2 class="headline headline--medium">To the Clinicasdf</h2>
+    <h1 class="headline headline--large">Welcome</h1>
+    <h2 class="headline headline--medium">To the Clinic</h2>
     <h3 class="headline headline--small">Browse our services and book an appointment</h3>
     <a href="<?php echo esc_url(site_url('/snake')); ?>" class="btn btn--large btn--blue">Book an Appointment</a>
     <?php /* esc_url() Security: Whenever manually echoing from the database. Prevents hacked website from endangering users */ ?>
   </div>
-</div>asdfasdfasdfasdfasdf
+</div>
 
 <div class="full-width-split group">
   <div class="full-width-split__one">
