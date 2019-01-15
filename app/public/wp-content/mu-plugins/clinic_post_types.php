@@ -133,6 +133,8 @@ function clinic_post_types()
         'show_ui' => true,
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-welcome-write-blog',
+        'capability_type' => 'note',
+        'map_meta_cap' => true,
         'supports' => array(
             'title', 'editor', 'author'
         ),
