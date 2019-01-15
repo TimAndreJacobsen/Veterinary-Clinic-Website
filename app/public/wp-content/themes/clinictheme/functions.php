@@ -170,11 +170,13 @@ function login_title() { // Use custom text instead of WP - gets rid of "powered
  *  @param = incoming REST API request. create, read, update, delete note.
  *  @return = returns $data with enforced private or trash status
  */
-function make_note_private($data) {
+function make_note_private($data, $post_array) {
     if ($data['post_type'] == 'note') {
+        if (count_user_posts(get_current_user_id(), 'note') > 9 AND !$post_array['ID']) {
+            die("Per user note limit is 10 notes, please delete a post to free up space.");
+        }
+
         $data['post_title'] = sanitize_text_field($data['post_title']);
-    }
-    if ($data['post_type'] == 'note') {
         $data['post_content'] = sanitize_textarea_field($data['post_content']);
     }
     if ($data['post_type'] == 'note' AND $data['post_status'] != 'trash') {
@@ -184,10 +186,9 @@ function make_note_private($data) {
 }
 
 
-/****************************************************************
- * Hooks and scripts
- * 
- ****************************************************************/
+/*********************
+ * Hooks and scripts *
+ *********************/
 // customize login screen
 add_filter('login_headertitle', 'login_title');
 add_filter('login_headerurl', 'clinic_header_url');
@@ -211,6 +212,6 @@ add_filter('acf/fields/google_map/api', 'acf_google_maps_API_key');
 /* REST API hook */
 add_action('rest_api_init', 'clinic_custom_rest');
 // Force post_types: note to be private
-add_filter('wp_insert_post_data', 'make_note_private');
+add_filter('wp_insert_post_data', 'make_note_private', 10, 2); /* add_filter( WP_hook, our_function, prio_number(lower is earlier), args_number ) */
 
 ?>
