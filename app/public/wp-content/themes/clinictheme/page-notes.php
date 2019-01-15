@@ -14,6 +14,7 @@ page_banner();
     <input placeholder="note title" class="new-note-title">
     <textarea placeholder="..." class="new-note-body"></textarea>
     <span class="submit-note">Create Note</span>
+    <span class="note-limit-message">Per user note limit is 10 notes, please delete a note to free up space.</span>
   </div>
 
   <ul class="min-list link-list" id="my-notes">
