@@ -158,13 +158,25 @@ function login_title() { // Use custom text instead of WP - gets rid of "powered
     return 'The Clinic';
 }
 
+/**************
+ *  SECURITY  *
+ **************/
+
 /**
- * Intercepts incoming requests and enforces "private" status on post_type note.
+ * Intercepts incoming requests before they are saved to the database.
+ * Sanitizes post_content(body) and post_title to remove HTML
+ * Enforces "private" status on post_type note.
  * This prevents client side custom JavaScript from sending modified requests to break privacy.
  *  @param = incoming REST API request. create, read, update, delete note.
  *  @return = returns $data with enforced private or trash status
  */
 function make_note_private($data) {
+    if ($data['post_type'] == 'note') {
+        $data['post_title'] = sanitize_text_field($data['post_title']);
+    }
+    if ($data['post_type'] == 'note') {
+        $data['post_content'] = sanitize_textarea_field($data['post_content']);
+    }
     if ($data['post_type'] == 'note' AND $data['post_status'] != 'trash') {
         $data['post_status'] = "private";
     }
