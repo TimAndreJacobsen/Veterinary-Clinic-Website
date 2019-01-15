@@ -10,10 +10,10 @@ class MyNotes {
     // =================================================================
 
     events() {
-        $(".delete-note").on("click", this.deleteNote);            // delete btn
-        $(".edit-note").on("click", this.editNote.bind(this));     // edit btn
-        $(".update-note").on("click", this.updateNote.bind(this)); // save btn
-        $(".submit-note").on("click", this.createNote.bind(this)); // new btn
+        $("#my-notes").on("click", ".delete-note", this.deleteNote);            // delete btn
+        $("#my-notes").on("click", ".edit-note", this.editNote.bind(this));     // edit btn
+        $("#my-notes").on("click", ".update-note", this.updateNote.bind(this)); // save btn
+        $(".submit-note").on("click", this.createNote.bind(this));              // new btn
     }
 
     // =================================================================
