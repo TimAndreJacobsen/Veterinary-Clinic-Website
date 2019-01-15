@@ -32,6 +32,9 @@ class MyNotes {
                 thisNote.slideUp();
                 console.log("Delete successfull");
                 console.log(response);
+                if(response.user_note_count < 10) {
+                    $(".note-limit-message").removeClass("active");
+                }
             },
             error: (response) => {
                 console.log("Delete ERROR");
@@ -91,6 +94,9 @@ class MyNotes {
                 console.log(response);
             },
             error: (response) => {
+                if(response.responseText == "Per user note limit is 10 notes, please delete a note to free up space.") {
+                    $(".note-limit-message").addClass('active');
+                }
                 console.log("post/update ERROR");
                 console.log(response);
             }
