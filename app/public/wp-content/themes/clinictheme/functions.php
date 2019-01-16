@@ -142,6 +142,23 @@ function redirect_sub_to_frontend(){
     }
 }
 
+/**
+ * Redirect log from wp-admin page to homepage
+ * Pull current user role information and checks for 2 conditions:
+ * Is users role subscriber AND is that the only role.
+ * Redirects users to frontpage after logging in
+ */
+function auto_redirect_external_after_logout(){
+    // check if user is leaving from admin
+    // is_admin() check would not work here probably as we left the admin already
+    if ( false !== strpos( $_SERVER['HTTP_REFERER'], 'wp-admin' ) ){
+        wp_redirect(site_url('/'));
+    } else {
+        wp_redirect(site_url('/'));
+    }
+    exit;
+}
+
 function hide_admin_subscriber() {
     $current_user = wp_get_current_user();
     if(count($current_user->roles) == 1 AND $current_user->roles[0] == 'subscriber') {
@@ -160,6 +177,7 @@ function login_css_image(){ // Use custom CSS instead of WP - gets rid of logo
 function login_title() { // Use custom text instead of WP - gets rid of "powered by..." text
     return 'The Clinic';
 }
+
 
 /**************
  *  SECURITY  *
@@ -200,6 +218,8 @@ add_action('login_enqueue_scripts', 'login_css_image');
 add_action('wp_loaded', 'hide_admin_subscriber');
 // Redirect subscriber accounts from wp-admin to homepage
 add_action('admin_init', 'redirect_sub_to_frontend');
+// redirect on logout
+add_action( 'wp_logout', 'auto_redirect_external_after_logout');
 
 /* Add CSS and JS to be handled by Wordpress */
 add_action('wp_enqueue_scripts', 'clinic_resources');
