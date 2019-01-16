@@ -105,20 +105,20 @@ function clinic_post_types()
         )
     ));
 
+
     // Pet Post Type
     register_post_type('pet', array(
-        'public' => false, // setting this to false makes them private and hides from public queries and search results. But this also hides post_type in admin dashboard, fixed by show_ui => true
-        'show_ui' => true, // Enabling pet post_type in admin dashboard
-        'has_archive' => true,
+        'public' => false,
+        'show_ui' => true,
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-format-aside',
-        'supports' => array(
-            'title', 'editor', 'thumbnail', 'author'
-        ),
         'capability_type' => 'pet',
         'map_meta_cap' => true,
+        'supports' => array(
+            'title', 'editor', 'author'
+        ),
         'labels' => array(
-            'name' => 'Pet',
+            'name' => 'Pets',
             'add_new_item' => 'Add new pet',
             'edit_item' => 'Edit pet',
             'all_items' => 'all pets',
