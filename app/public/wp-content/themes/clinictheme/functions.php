@@ -131,13 +131,13 @@ function clinic_custom_rest() {
         'get_callback' => function(){return count_user_posts(get_current_user_id(), 'pet');}
     ));
     register_rest_field('pet', 'name', array(
-        'get_callback' => function(){ return 'pet_name_here' ;}
+        'get_callback' => function(){ return get_field('name') ;}
     ));
     register_rest_field('pet', 'age', array(
-        'get_callback' => function(){return 'pet_age_here' ;}
+        'get_callback' => function(){return get_field('age') ;}
     ));
     register_rest_field('pet', 'breed', array(
-        'get_callback' => function(){return 'pet_breed_here' ;}
+        'get_callback' => function(){return get_field('breed') ;}
     ));
 }
 
