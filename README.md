@@ -13,9 +13,10 @@
 
 ## Stack
 #### Wordpress custom theme - built with PHP and JavaScript.
-#### features a custom REST API.
+#### features a custom REST API to feed information to JavaScript files
 #### Libraries: jQuery with AJAX and JSON
 #### Google integration; Maps, Analytics ++
+#### MySQL database, cPanel host.
 
 ## Development
 #### Gulp automation for workflow. Bundles JS and CSS on changes. Also refreshes browser.
