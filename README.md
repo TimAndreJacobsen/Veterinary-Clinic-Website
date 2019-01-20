@@ -19,9 +19,8 @@
 
 ## Development
 #### Gulp automation for workflow. Bundles JS and CSS on changes. Also refreshes browser.
-#### Using a private repo for production to hide sensitive database and config files. Public repo is equal to private repo, only with .gitignore for sensitive files.
 #### All images are free to use, share and change. Found through Google's advanced image search.
 #### Local hosting was done on a nginx server. Production hosting on an Apache server.
 
 ## Deployment
-#### Auto-deployment: GIT push to production branch hosted privately on GitHub and uses DeployHQ to upload files over SSH with webhooks.
+#### Auto-deployment: GIT push to production branch and uses DeployHQ to upload files over SSH with webhooks.
