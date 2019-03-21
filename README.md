@@ -1,6 +1,8 @@
 ## Wordpress Custom Theme - Veterinarian clinic with options for custom locations like shops and playgrounds.
 ### https://timandrejacobsen.com/
 
+- Login with username "user" and password "user" to access additional functionality
+
 ## Features
 #### Live search built on JavaScript
 #### Easy to use from the admin panel for clients. Access to update Articles, Events, Employees, Locations and more.
