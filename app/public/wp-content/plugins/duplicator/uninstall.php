@@ -39,7 +39,7 @@ if (DUP_Settings::Get('uninstall_files')) {
 			if (strstr($file, '_installer.php'))
 				@unlink("{$file}");
 		}
-		foreach (glob("{$ssdir}/*_archive.zip") as $file) {
+		foreach (glob("{$ssdir}/*_archive.zip*") as $file) {
 			if (strstr($file, '_archive.zip')) 
 				@unlink("{$file}");
 		}
@@ -53,6 +53,10 @@ if (DUP_Settings::Get('uninstall_files')) {
 		}
 		foreach (glob("{$ssdir}/*.log") as $file) {
 			if (strstr($file, '.log')) 
+				@unlink("{$file}");
+		}
+        foreach (glob("{$ssdir}/*.log1") as $file) {
+			if (strstr($file, '.log1'))
 				@unlink("{$file}");
 		}
 
@@ -91,5 +95,6 @@ if (DUP_Settings::Get('uninstall_settings')) {
 	DUP_Settings::Delete();
 	delete_option('duplicator_ui_view_state');
 	delete_option('duplicator_package_active');
+	delete_option("duplicator_exe_safe_mode");
 }
 ?>
