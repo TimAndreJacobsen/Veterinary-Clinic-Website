@@ -209,6 +209,21 @@ function make_note_private($data, $post_array) {
     return $data;
 }
 
+function make_pet_private($data, $post_array) {
+    if ($data['post_type'] == 'pet') {
+        if (count_user_posts(get_current_user_id(), 'pet') > 9 AND !$post_array['ID']) {
+            die("Per user pet limit is 10 pets, please delete a pet to free up space.");
+        }
+
+        $data['post_title'] = sanitize_text_field($data['post_title']);
+        $data['post_content'] = sanitize_textarea_field($data['post_content']);
+    }
+    if ($data['post_type'] == 'pet' AND $data['post_status'] != 'trash') {
+        $data['post_status'] = "private";
+    }
+    return $data;
+}
+
 
 /*********************
  * Hooks and scripts *
@@ -237,7 +252,8 @@ add_filter('acf/fields/google_map/api', 'acf_google_maps_API_key');
 
 /* REST API hook */
 add_action('rest_api_init', 'clinic_custom_rest');
-// Force post_types: note to be private
+// Force post_types: note, pet to be private
 add_filter('wp_insert_post_data', 'make_note_private', 10, 2); /* add_filter( WP_hook, our_function, prio_number(lower is earlier), args_number ) */
+add_filter('wp_insert_post_data', 'make_pet_private', 10, 2);
 
 ?>
