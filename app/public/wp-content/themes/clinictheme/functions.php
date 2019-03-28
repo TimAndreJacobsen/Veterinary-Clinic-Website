@@ -126,6 +126,9 @@ function clinic_custom_rest() {
     register_rest_field('note', 'user_note_count', array(
         'get_callback' => function(){return count_user_posts(get_current_user_id(), 'note');}
     ));
+    register_rest_field('pet', 'user_pet_count', array(
+        'get_callback' => function(){return count_user_posts(get_current_user_id(), 'pet');}
+    ));
 }
 
 /**
