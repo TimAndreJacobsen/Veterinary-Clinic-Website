@@ -14,10 +14,8 @@ page_banner();
     <input placeholder="Pets name: ..." class="new-pet-title">
     <textarea placeholder="Useful information about your pet" class="new-pet-body"></textarea>
     <span class="submit-pet">Complete</span>
-    
-    <span class="pet-limit-message">Per user pet limit is 10 pets, please contact an admin if you need more space.</span>
+    <span class="pet-limit-message">Per user pet limit is 10 pets, please delete a pet to free up space.</span>
   </div>
-
 
   <ul class="min-list link-list" id="my-pets">
     <?php
