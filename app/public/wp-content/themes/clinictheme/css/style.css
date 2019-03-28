@@ -18,6 +18,7 @@ Version: 1.0
 @import "modules/login";
 @import "modules/btn";
 @import "modules/my-notes";
+@import "modules/my-pets";
 @import "modules/site-header";
 @import "modules/site-footer";
 @import "modules/main-navigation";
