@@ -13,7 +13,7 @@ class MyPets {
         $("#my-pets").on("click", ".delete-pet", this.deletePet);            // delete btn
         $("#my-pets").on("click", ".edit-pet", this.editPet.bind(this));     // edit btn
         $("#my-pets").on("click", ".update-pet", this.updatePet.bind(this)); // save btn
-        $(".submit-pet").on("click", this.createPet.bind(this));              // new btn
+        $(".submit-pet").on("click", this.createPet.bind(this));             // new btn
     }
 
     // =================================================================
