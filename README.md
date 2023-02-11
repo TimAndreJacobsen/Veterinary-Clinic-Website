@@ -1,7 +1,4 @@
 ## Veterinary clinic with options for custom locations like shops and playgrounds.
-### https://timandrejacobsen.com/
-
-- Login with username "user" and password "user" to access additional functionality
 
 ## Features
 - Wordpress Custom Theme
